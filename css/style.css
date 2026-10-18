@@ -1,0 +1,2349 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+  }
+  
+  body {
+    font-family: 'Segoe UI', sans-serif;
+    color: #e2e8f0;
+  }
+  input, input[type="date"], textarea {
+    font-family: 'Segoe UI', sans-serif;
+  }
+  
+  .layout {
+    display: flex;
+    height: 100vh;
+  }
+  
+  /* SIDEBAR */
+  .sidebar {
+    width: 370px;
+    background-color: #222222;
+    display: flex;
+    flex-direction: column;
+    height: 100vh;
+    padding: 20px 20px 0 20px;
+    box-sizing: border-box;
+    transition: width 0.3s ease, padding 0.3s ease;
+    overflow: hidden;
+    position: relative;
+  }
+  
+  /* LOGO */
+  .logo-box {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding-top: 10px;
+    padding-bottom: 10px;
+    margin-top: 0;
+  }
+  
+  .sidebar.collapsed .logo-box {
+    justify-content: center;
+  }
+
+  
+  .logo-box img {
+    width: 130px;
+    height: auto;
+    display: block;
+ 
+  }
+  
+  /* BUSCADOR */
+  .search-box {
+    display: flex;
+    align-items: center;
+    background: #2e2e2e;
+    padding: 8px 12px;
+    border-radius: 6px;
+    margin-bottom: 20px;
+  }
+  
+  .search-box i {
+    color: #a1a1aa;
+    margin-right: 8px;
+    font-size: 0.9em;
+  }
+  
+  .search-box input {
+    border: none;
+    outline: none;
+    width: 100%;
+    font-size: 0.85em;
+    background: transparent;
+    color: #f1f5f9;
+  }
+  
+  /* CONTENIDO CON SCROLL */
+  .sidebar-scrollable {
+    flex: 1 1 auto;
+    overflow-y: auto;
+    padding-right: 6px;
+    scrollbar-width: thin;
+    scrollbar-color: #4b5563 #1f2937;
+  }
+  
+  
+  .sidebar-scrollable::-webkit-scrollbar {
+    width: 8px;
+  }
+  
+  .sidebar-scrollable::-webkit-scrollbar-track {
+    background: #1f2937;
+  }
+  
+  .sidebar-scrollable::-webkit-scrollbar-thumb {
+    background-color: #4b5563;
+    border-radius: 4px;
+  }
+  
+  /* SECCIONES DE PROYECTOS */
+  .project-section {
+    margin-bottom: 25px;
+  }
+  
+  .section-title {
+    font-size: 0.75em;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    color: #9ca3af;
+    margin-bottom: 10px;
+    display: block;
+    padding-left: 6px;
+  }
+  
+  /* LISTADO DE PROYECTOS */
+  .project-list {
+    list-style: none;
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+    padding-left: 0;
+  }
+  
+  .project-list li {
+    font-size: 0.82em;
+    color: #f1f5f9;
+    padding: 6px 10px;
+    border-radius: 6px;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    transition: background 0.2s ease;
+    cursor: pointer;
+  }
+  
+  .project-list li:hover {
+    background-color: #333333;
+  }
+  
+  .project-list li i {
+    font-size: 0.85em;
+    color: #cbd5e1;
+  }
+  
+  .project-list li span {
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    flex: 1;
+  }
+  
+  /* BADGES */
+  .badge {
+    display: inline-block;
+    font-size: 0.65em;
+    font-weight: 600;
+    line-height: 1;
+    padding: 3px 8px;
+    border-radius: 999px;
+    white-space: nowrap;
+    margin-left: auto;
+    vertical-align: middle;
+    width: fit-content;
+  }
+  
+  .badge.blue   { background-color: #3b82f6; color: #fff; }
+  .badge.green  { background-color: #10b981; color: #fff; }
+  .badge.yellow { background-color: #facc15; color: #1e293b; }
+  .badge.red    { background-color: #ef4444; color: #fff; }
+  .badge.gray   { background-color: #64748b; color: #fff; }
+  
+  /* FOOTER FIJO ABAJO */
+  .sidebar-footer {
+    flex-shrink: 0;
+    text-align: center;
+    margin-top: auto;
+    padding-top: 10px;
+  }
+  
+  .sidebar-footer img {
+    max-width: 100px;
+  }
+  
+  /* MAIN */
+.main {
+    flex: 1;
+    padding: 30px;
+    background-color: #f1f5f9; /* Gris clarito */
+    overflow-y: auto;
+  }
+  
+  /* TOP BAR */
+  .top-bar {
+    background: linear-gradient(135deg, #667eea, #764ba2);
+
+    color: white;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 1rem 2rem;
+    border-radius: 12px;
+    margin-bottom: 1.5rem;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+    animation: fadeInTop 0.6s ease-in-out;
+  }
+  
+  @keyframes fadeInTop {
+    from {
+      opacity: 0;
+      transform: translateY(-10px);
+    }
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+  
+  
+  .icon-btn {
+    background-color: white;
+    color: #4b0082; /* Violeta profundo */
+    border-radius: 50%;
+    width: 42px;
+    height: 42px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-left: 12px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    transition: all 0.3s ease;
+    font-size: 18px;
+    cursor: pointer;
+    border: 2px solid transparent;
+  }
+  
+  .icon-btn:hover {
+    transform: scale(1.1);
+    background: linear-gradient(135deg, #7f53ac, #647dee); /* Degradado atractivo */
+    color: white;
+    border: 2px solid #fff;
+    box-shadow: 0 6px 14px rgba(0, 0, 0, 0.25);
+  }
+  
+  
+  
+  .icon-btn i {
+    font-size: 16px;
+  }
+  
+  
+  .top-bar-left h1 {
+    font-size: 1.6rem;
+    color: #f8fafc;
+  }
+  
+  
+  .top-bar-left p {
+    color: #cbd5e1;
+    font-size: 0.95rem;
+  }
+  .top-bar-left {
+    display: flex;
+    flex-flow: column;
+  }
+  
+  .top-bar-right {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    justify-content: end;
+  }
+  
+  .top-bar-right .date {
+    font-weight: 600;
+    color: #ffffff;
+  }
+  .top-bar-right svg {
+    width: 110px;
+    height: auto;
+  }
+
+  .icon-btn i {
+    color: #000;
+  }
+  
+  .top-bar h2 {
+    font-size: 1.5em;
+    margin-bottom: 4px;
+    color: #1e293b; /* Gris muy oscuro */
+  }
+  
+  /* CARDS */
+  .cards {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(22%, 1fr));
+    gap: 24px;
+    margin-bottom: 40px;
+  }
+  
+  .card {
+    padding: 24px;
+    border-radius: 16px;
+    color: #fff;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    transition: transform 0.2s ease, box-shadow 0.3s ease;
+    position: relative;
+    overflow: hidden;
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.08);
+  }
+  
+  .card:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 15px 25px rgba(0, 0, 0, 0.1);
+  }
+  
+  .card .label {
+    font-size: 0.85rem;
+    opacity: 0.9;
+    margin-bottom: 8px;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+  }
+  
+  .card .value {
+    font-size: 1.8rem;
+    font-weight: 700;
+    line-height: 1;
+  }
+  
+  /* Icono arriba a la derecha */
+  .card .icon {
+    position: absolute;
+    top: 16px;
+    right: 16px;
+    font-size: 28px;
+    opacity: 0.2;
+  }
+  
+  /* Estilos por tipo */
+  .card.today {
+    background: linear-gradient(135deg, #38bdf8, #0ea5e9); /* celeste suave */
+  }
+  
+  
+  .card.week {
+    background: linear-gradient(135deg, #2563eb, #3b82f6); /* azul suave */
+  }
+  
+  .card.month {
+    background: linear-gradient(135deg, #059669, #10b981); /* verde esmeralda */
+  }
+  
+  .card.warning {
+    background: linear-gradient(135deg, #f97316, #ef4444); /* advertencia */
+  }
+  
+  
+  /* FORMULARIO */
+  .form-section {
+    background-color: #ffffff;
+    padding: 20px;
+    border-radius: 10px;
+    border: 1px solid #e2e8f0;
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.04);
+    margin-top: 10px;
+  }
+  
+  .form-section h3 {
+    color: #1e293b;
+  }
+  .form-section p {
+    color: #64748b;
+    margin-bottom: 12px;
+  }
+  
+  .form-row {
+    display: flex;
+    gap: 15px;
+    margin-bottom: 20px;
+    flex-wrap: wrap;
+  }
+  
+  .form-row select,
+  .form-row input,
+  .form-row textarea {
+    padding: 10px;
+    border-radius: 6px;
+    border: 1px solid #cbd5e1;
+    background-color: #f9fafb;
+    color: #1e293b;
+    font-size: 0.9em;
+    flex: 1;
+    min-width: 180px;
+  }
+  
+  .form-row textarea {
+    width: 100%;
+    resize: vertical;
+  }
+
+  
+  /* BOTÓN HAMBURGUESA */
+.toggle-btn {
+  background-color: #333;
+  border: none;
+  color: white;
+  font-size: 18px;
+  padding: 10px 12px;
+  border-radius: 6px;
+  margin-bottom: 10px;
+  cursor: pointer;
+  align-self: flex-end;
+  position: absolute;
+  top: 10px;
+  right: 17px;
+  z-index: 999;
+}
+
+.toggle-btn:hover {
+  background-color: #444;
+}
+
+/* SIDEBAR COLAPSADO */
+.sidebar.collapsed {
+  width: 70px;
+}
+
+.sidebar.collapsed .logo-box,
+.sidebar.collapsed .search-box input,
+.sidebar.collapsed .section-title,
+.sidebar.collapsed .project-list li span,
+.sidebar.collapsed .badge,
+.sidebar.collapsed .sidebar-footer,
+.sidebar.collapsed .search-box {
+  display: none;
+}
+
+.sidebar.collapsed .search-box i {
+  margin: 0 auto;
+}
+
+.sidebar.collapsed .project-list li {
+  justify-content: center;
+}
+/* === Tooltip visible SOLO cuando el aside está contraído === */
+
+/* 1) el aside no debe recortar lo que se sale hacia la derecha */
+.sidebar.collapsed{
+  overflow: visible;
+  z-index: 5;           /* para que quede por encima del main si se superponen */
+}
+
+/* 2) el contenedor con scroll permite desbordar en X (tooltip) */
+.sidebar.collapsed .sidebar-scrollable{
+  overflow-y: auto;
+  overflow-x: visible;
+  position: relative;   /* ancla de stacking-context */
+  padding-top: 50px;
+}
+
+/* 3) cada li será el ancla del tooltip */
+.sidebar.collapsed .project-list li[data-tooltip]{
+  position: relative;
+}
+
+/* 4) tooltip + flecha */
+.sidebar.collapsed .project-list li[data-tooltip]::after{
+  content: attr(data-tooltip);
+  position: absolute;
+  top: 50%;
+  left: calc(100% + 10px);
+  transform: translateY(-50%) scale(.98);
+  background: #111827;
+  color: #fff;
+  font-size: .82rem;
+  padding: 6px 10px;
+  border-radius: 6px;
+  white-space: nowrap;
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity .15s ease, transform .15s ease;
+  box-shadow: 0 8px 20px rgba(0,0,0,.25);
+  z-index: 9999;
+}
+
+.sidebar.collapsed .project-list li[data-tooltip]::before{
+  content: "";
+  position: absolute;
+  top: 50%;
+  left: calc(100% + 2px);
+  transform: translateY(-50%);
+  border: 6px solid transparent;
+  border-right-color: #111827;
+  opacity: 0;
+  transition: opacity .15s ease;
+  z-index: 9999;
+}
+
+/* mostrar en hover */
+.sidebar.collapsed .project-list li[data-tooltip]:hover::after,
+.sidebar.collapsed .project-list li[data-tooltip]:hover::before{
+  opacity: 1;
+  transform: translateY(-50%) scale(1);
+}
+/* ===== Tooltip flotante global ===== */
+.smart-tooltip{
+  position: fixed;                 /* fuera del aside, no se corta */
+  top: 0; left: 0;
+  transform: translateY(-50%) scale(.98);
+  background: #111827;
+  color: #fff;
+  padding: 6px 10px;
+  border-radius: 6px;
+  font-size: 0.82rem;
+  white-space: nowrap;
+  box-shadow: 0 8px 20px rgba(0,0,0,.25);
+  opacity: 0;
+  pointer-events: none;
+  z-index: 99999;
+  transition: opacity .15s ease, transform .15s ease;
+}
+.smart-tooltip::before{
+  content:"";
+  position: absolute;
+  left: -6px; top: 50%;
+  transform: translateY(-50%);
+  border: 6px solid transparent;
+  border-right-color: #111827;
+}
+.smart-tooltip.show{
+  opacity: 1;
+  transform: translateY(-50%) scale(1);
+}
+
+/* ===== Estado activo en lista (ambos modos) ===== */
+.project-list li.active{
+  background: linear-gradient(135deg, rgba(99,102,241,.16), rgba(59,130,246,.16));
+  border: 1px solid rgba(99,102,241,.35);
+}
+.sidebar.collapsed .project-list li.active{
+  background: linear-gradient(90deg, #7f53ac, #647dee); /* mismo degradado del topbar */
+  color: #fff;
+  border-radius: 6px;
+  padding: 4px 8px;
+  font-weight: 600;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.25);
+  transition: all 0.2s ease;
+}
+
+/* Asegura que el aside esté por encima del main si se solapan */
+.sidebar{ position: relative; z-index: 1000; }
+.main{ position: relative; z-index: 1; }
+
+/* Hover para todos los elementos */
+.project-list li:hover {
+  background: rgba(255, 255, 255, 0.08);
+  border-radius: 6px;
+  cursor: pointer;
+}
+
+/* Estado activo en la lista de proyectos */
+.project-list li.active {
+  background: linear-gradient(90deg, #7f53ac, #647dee); /* mismo degradado del topbar */
+  color: #fff;
+  border-radius: 6px;
+  padding: 4px 8px;
+  font-weight: 600;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.25);
+  transition: all 0.2s ease;
+}
+
+/* Ícono y texto dentro del activo */
+.project-list li.active i,
+.project-list li.active span {
+  color: #fff;
+}
+
+/* ===== Card / contenedor ===== */
+.card-table{
+  background:#fff;
+  border:1px solid #e5e7eb;
+  border-radius:16px;
+  padding:18px 18px 12px;
+  box-shadow: 0 10px 30px rgba(2,6,23,.06);
+  animation: card-in .35s ease both;
+  margin-top: 10px;
+}
+@keyframes card-in{ from{opacity:0; transform: translateY(6px)} to{opacity:1; transform:none} }
+
+.card-table__head{
+  display:flex; align-items:center; justify-content:space-between; gap:16px; margin-bottom:12px;
+}
+.card-table__head h3{ color:#0f172a; font-size:1.15rem; margin:0 0 2px; }
+.card-table__head p{ color:#64748b; margin:0; }
+
+/* ===== Controles ===== */
+.table-controls{ display:flex; align-items:center; gap:12px; }
+.table-controls__show{ display:flex; align-items:center; gap:8px; color:#475569; }
+.table-controls__show select{
+  border:1px solid #cbd5e1; background:#f8fafc; border-radius:10px; padding:6px 10px; outline:none;
+}
+.table-controls__search{
+  position:relative; display:flex; align-items:center;
+  border:1px solid #cbd5e1; background:#f8fafc; border-radius:12px; padding:8px 12px 8px 36px;
+  transition: box-shadow .2s ease, border-color .2s ease;
+}
+.table-controls__search i{ position:absolute; left:12px; color:#94a3b8; font-size:.95rem; }
+.table-controls__search input{ border:none; outline:none; background:transparent; min-width:260px; color:#0f172a; }
+.table-controls__search:focus-within{
+  border-color: transparent;
+  box-shadow: 0 0 0 3px rgba(99,102,241,.25), 0 0 0 6px rgba(59,130,246,.15); /* ring en tu degradado */
+}
+
+/* ===== Tabla ===== */
+.table-wrap{ overflow:auto; border-radius:12px; }
+.pretty-table{ width:100%; border-collapse:separate; border-spacing:0; }
+.pretty-table thead th{
+  position: sticky; top:0; z-index:1;
+  background: linear-gradient(180deg, #f8fafc, #f1f5f9);
+  color:#0f172a; font-weight:600; text-align:left;
+  padding:12px 14px; border-bottom:1px solid #e5e7eb; white-space:nowrap;
+}
+.pretty-table thead th i{ color:#94a3b8; margin-left:6px; font-size:.8rem; }
+.pretty-table tbody td{
+  padding:14px; border-bottom:1px solid #eef2f7; color:#0f172a;
+  vertical-align:middle; background:#fff;
+}
+.pretty-table tbody tr{
+  transition: background .18s ease, transform .18s ease, box-shadow .18s ease;
+  animation: row-in .25s ease both;
+}
+.pretty-table tbody tr:hover{
+  background:#f9fafb;
+  transform: translateY(-1px);
+  box-shadow: 0 6px 16px rgba(2,6,23,.06);
+}
+
+/* Zebra sutil */
+.pretty-table tbody tr:nth-child(even) td{ background:#fcfdff; }
+
+/* ===== Badges ===== */
+.badge{
+  display:inline-flex; align-items:center; gap:6px;
+  padding:6px 10px; border-radius:999px; font-weight:600; font-size:.78rem;
+  box-shadow: inset 0 0 0 1px rgba(15,23,42,.08);
+}
+.status--ok    { background:rgba(16,185,129,.12); color:#065f46; }
+.status--late  { background:rgba(239,68,68,.12);  color:#7f1d1d; }
+.status--review{ background:rgba(245,158,11,.15); color:#7c2d12; }
+.badge i{ font-size:.9rem; }
+
+/* ===== Botones de acción (redondos) ===== */
+.pretty-table .icon-btn {
+  width:36px; height:36px; display:inline-flex; align-items:center; justify-content:center;
+  border:none; border-radius:50%;
+  background:#0f172a; color:#fff; cursor:pointer;
+  transition: transform .15s ease, box-shadow .15s ease, background .2s ease;
+  box-shadow: 0 6px 14px rgba(2,6,23,.15);
+}
+.pretty-table .icon-btn i{ font-size:.9rem; color: #fff; }
+
+.pretty-table .icon-btn--edit  { background: linear-gradient(135deg, #6366f1, #3b82f6); }
+.pretty-table .icon-btn--delete{ background: linear-gradient(135deg, #f97316, #ef4444); }
+
+/* ===== Pie ===== */
+.table-foot{.pretty-table
+  padding:12px 4px 4px; display:flex; gap:10px; justify-content:space-between; align-items:center; color:#64748b;
+}
+.pagination{ display:flex; align-items:center; gap:8px; }
+.page-btn{
+  width:34px; height:34px; border:none; border-radius:10px; background:#f1f5f9; color:#0f172a; cursor:pointer;
+  display:grid; place-items:center; transition: transform .15s ease, background .15s ease;
+}
+.page-btn:hover{ transform: translateY(-1px); background:#e2e8f0; }
+.page-btn:disabled{ opacity:.45; cursor:not-allowed; transform:none; }
+.page-index{ color:#0f172a; }
+/* ===== Project Info v2 ===== */
+:root{
+  --pi2-bg: #ffffff;
+  --pi2-border: #e6e9f0;
+  --pi2-shadow: 0 10px 30px rgba(0,0,0,.08);
+  --pi2-grad: linear-gradient(135deg, #6aa8ff 0%, #6c5ce7 100%);
+  --pi2-text: #0f172a;
+  --pi2-muted: #64748b;
+}
+
+.project-info-bar.v2{
+  width: 100%;
+  background: var(--pi2-bg);
+  border: 1px solid var(--pi2-border);
+  box-shadow: var(--pi2-shadow);
+  border-radius: 16px;
+  padding: 18px 20px;
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  position: relative;
+  border-top: 4px solid #2563eb;
+}
+
+/* Head: avatar + owner + acciones */
+/* .pi2-head{
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+  gap: 16px;
+} */
+
+.pi2-owner {
+  display:flex; align-items:center; gap:14px;
+}
+
+.pi2-avatar{
+  width:56px; height:56px; border-radius:50%;
+  background: #e2e8f0;
+  position:relative; overflow:hidden;
+  flex: 0 0 56px;
+  box-shadow: 0 6px 14px rgba(0,0,0,.08);
+}
+.pi2-avatar img{ width:100%; height:100%; object-fit:cover; display:block; }
+.pi2-avatar:not(:has(img))::after{
+  /* fallback con iniciales */
+  content: attr(data-initials);
+  position:absolute; inset:0;
+  display:grid; place-items:center;
+  color:#334155; font-weight:700;
+}
+
+.pi2-owner-data{ display:flex; flex-direction:column; gap:4px; }
+.pi2-owner-title{ font-size:.75rem; color:var(--pi2-muted); }
+.pi2-owner-name{ font-weight:700; color:var(--pi2-text); display:flex; align-items:center; gap:8px; }
+.pi2-owner-name i{ color:#111827; opacity:.9; }
+
+.pi2-owner-tags{ display:flex; gap:8px; flex-wrap:wrap; }
+.chip{
+  display:inline-flex; align-items:center; gap:6px;
+  padding:6px 10px; border-radius:999px;
+  font-size:.78rem; font-weight:600;
+  background:#f1f5f9; color:#0f172a; border:1px solid #e2e8f0;
+}
+.chip i{ opacity:.85; }
+.chip-blue{ background:#eaf2ff; color:#1e40af; border-color:#c7dbff; }
+.chip-gray{ background:#eef2f7; color:#334155; border-color:#d8dee9; }
+
+/* Acciones con colores de marca aproximados */
+.pi2-actions { 
+  display:flex; 
+  gap:10px; 
+}
+.pi2-action {
+  width:20px; 
+  height:20px; 
+  border-radius:12px;
+  display:grid; 
+  place-items:center;
+  color:#fff; 
+  text-decoration:none;
+  transition: transform .15s ease, box-shadow .15s ease, filter .15s ease;
+  /* box-shadow: 0 6px 14px rgba(0,0,0,.12); */
+}
+.pi2-action img {
+  width: 100%;
+  height: auto;
+}
+.pi2-action i{ font-size:16px; }
+.pi2-action:hover { 
+  transform: translateY(-2px) scale(1.1); 
+  filter:saturate(1.15); 
+  /* box-shadow: 0 2px 8px rgba(0,0,0,0.2); */
+}
+
+
+/* Resumen */
+.pi2-summary{
+  display:flex; align-items:center; gap:10px;
+  padding:10px 12px; border-radius:12px;
+  background: #f8fafc;
+  color:#0f172a; border:1px solid #eef2f7;
+}
+.pi2-summary i{ color:#64748b; }
+
+/* Grid de datos */
+.pi2-grid{
+  display:grid;
+  grid-template-columns: repeat(6, minmax(0,1fr));
+  gap:12px;
+}
+.logo-top {
+  display: none;
+}
+@media (max-width: 1280px){
+  .pi2-grid{ grid-template-columns: repeat(3, minmax(0,1fr)); }
+}
+@media (max-width: 740px){
+  .pi2-grid{ grid-template-columns: repeat(2, minmax(0,1fr)); }
+}
+
+.pi2-card{
+  display:flex; gap:10px; align-items:center;
+  background:#ffffff; border:1px solid #eef2f7;
+  border-radius:12px; padding:12px;
+  transition: transform .15s ease, box-shadow .15s ease, border-color .15s ease;
+}
+.pi2-card:hover{ transform: translateY(-2px); box-shadow: 0 8px 20px rgba(0,0,0,.06); border-color:#e2e8f0; }
+
+.pi2-icon{
+  width:36px; height:36px; border-radius:10px; display:grid; place-items:center;
+  color:#fff; font-size:16px; box-shadow: inset 0 -10px 18px rgba(0,0,0,.08);
+}
+.i-purple{ background: linear-gradient(135deg,#8b5cf6,#6d28d9); }
+.i-cyan{ background: linear-gradient(135deg,#22d3ee,#0891b2); }
+.i-amber{ background: linear-gradient(135deg,#fbbf24,#f59e0b); }
+.i-green{ background: linear-gradient(135deg,#34d399,#059669); }
+.i-blue{ background: linear-gradient(135deg,#60a5fa,#2563eb); }
+.i-red{ background: linear-gradient(135deg,#f87171,#ef4444); }
+
+.pi2-meta{ display:flex; flex-direction:column; gap:2px; }
+.pi2-label{ font-size:.78rem; color:#64748b; }
+.pi2-value{ font-weight:700; color:#0f172a; }
+/* ===========================
+   Colaboradores (pi2-collab)
+   =========================== */
+   .pi2-collab {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    flex: 1 1 auto;
+    min-width: 280px;
+  }
+  
+  .pi2-collab-title {
+    font-size: .75rem;
+    text-transform: uppercase;
+    letter-spacing: .04em;
+    color: #64748b;
+    margin-right: 2px;
+    white-space: nowrap;
+  }
+  
+  .pi2-collab-list {
+    display: flex;
+    gap: 10px;
+    flex-wrap: wrap;
+    align-items: stretch;
+  }
+  
+  .pi2-collab-item {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    padding: 8px 10px;
+    background: #ffffff;
+    border: 1px solid #e2e8f0;
+    border-radius: 12px;
+    box-shadow: 0 2px 8px rgba(2,6,23,.04);
+    transition: transform .15s ease, box-shadow .15s ease, border-color .15s ease;
+  }
+  
+  .pi2-collab-item:hover {
+    transform: translateY(-1px);
+    border-color: #c7d2fe;           /* borde acorde a tu degradado azul/violeta */
+    box-shadow: 0 10px 20px rgba(2,6,23,.08);
+  }
+  
+  .pi2-collab-avatar {
+    width: 38px;
+    height: 38px;
+    border-radius: 50%;
+    object-fit: cover;
+    flex-shrink: 0;
+    box-shadow: 0 1px 0 rgba(255,255,255,.4), inset 0 0 0 2px #ffffff;
+  }
+  
+  .pi2-collab-meta {
+    display: flex;
+    flex-direction: column;
+    line-height: 1.15;
+    min-width: 120px;
+  }
+  
+  .pi2-collab-name {
+    font-weight: 700;
+    color: #0f172a;
+    font-size: .92rem;
+  }
+  
+  .pi2-collab-role {
+    color: #64748b;
+    font-size: .78rem;
+  }
+  
+  /* Compacto en pantallas angostas: solo avatares (texto en title) */
+  @media (max-width: 980px) {
+    .pi2-collab-list { gap: 8px; }
+    .pi2-collab-item {
+      padding: 4px;
+      border-radius: 999px;
+    }
+    .pi2-collab-meta { display: none; }
+    .pi2-collab-avatar { width: 34px; height: 34px; }
+  }
+  
+  /* Muy angosto: apilar bajo el jefe de proyecto si hace falta */
+  @media (max-width: 720px) {
+    .pi2-collab { flex-wrap: wrap; }
+  }
+/* Carrusel de colaboradores */
+.pi2-collab.scroller {
+  display: grid;
+  grid-template-columns: 36px 1fr 36px; /* Título | prev | viewport | next */
+  align-items: center;
+  gap: 10px;
+  min-width: 280px;
+}
+
+.pi2-collab-title {
+  font-size: .75rem;
+  text-transform: uppercase;
+  letter-spacing: .04em;
+  color: #64748b;
+  margin-right: 2px;
+  white-space: nowrap;
+}
+
+.pi2-collab-viewport {
+  position: relative;
+  overflow: hidden;
+  mask-image: linear-gradient(to right, transparent 0, black 16px, black calc(100% - 16px), transparent 100%);
+  -webkit-mask-image: linear-gradient(to right, transparent 0, black 16px, black calc(100% - 16px), transparent 100%);
+  border-radius: 12px;
+}
+
+.pi2-collab-track {
+  display: flex;
+  gap: 10px;
+  padding: 2px;
+  scroll-snap-type: x mandatory;
+  overflow-x: auto;
+  overscroll-behavior-x: contain;
+  scrollbar-width: thin;
+  scroll-behavior: smooth;
+  -ms-overflow-style: none !important;  /* IE y Edge */
+  scrollbar-width: none !important;     /* Firefox */
+  overflow-x: hidden !important;        /* bloquea scroll manual */
+}
+
+.pi2-collab-track::-webkit-scrollbar { height: 8px; }
+.pi2-collab-track::-webkit-scrollbar-thumb {
+  background: #c7d2fe;
+  border-radius: 999px;
+}
+
+.pi2-collab-item {
+  scroll-snap-align: start;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 8px 10px;
+  background: #ffffff;
+  border: 1px solid #e2e8f0;
+  border-radius: 12px;
+  box-shadow: 0 2px 8px rgba(2,6,23,.04);
+  transition: transform .15s ease, box-shadow .15s ease, border-color .15s ease;
+  flex: 0 0 auto;
+  min-width: 220px;
+}
+
+/* .pi2-collab-item:hover {
+  transform: translateY(-1px);
+  border-color: #c7d2fe;
+  box-shadow: 0 10px 20px rgba(2,6,23,.08);
+} */
+
+.pi2-collab-avatar {
+  width: 38px; height: 38px; border-radius: 50%;
+  object-fit: cover; flex-shrink: 0;
+  box-shadow: 0 1px 0 rgba(255,255,255,.4), inset 0 0 0 2px #ffffff;
+}
+
+.pi2-collab-meta { display: flex; flex-direction: column; line-height: 1.15; }
+.pi2-collab-name { font-weight: 700; color: #0f172a; font-size: .92rem; }
+.pi2-collab-role { color: #64748b; font-size: .78rem; }
+
+/* Botones prev/next */
+.pi2-collab-nav {
+  width: 36px; height: 36px; border: 0; border-radius: 999px;
+  background: #fff; color: #334155; cursor: pointer;
+  box-shadow: 0 4px 10px rgba(15,23,42,.08);
+  display: inline-flex; align-items: center; justify-content: center;
+  transition: transform .15s ease, box-shadow .15s ease, background .15s ease, color .15s ease, opacity .15s ease;
+}
+
+/* .pi2-collab-nav:hover { transform: translateY(-1px); box-shadow: 0 10px 20px rgba(15,23,42,.12); } */
+.pi2-collab-nav:active { transform: translateY(0); }
+.pi2-collab-nav:disabled { opacity: .35; pointer-events: none; }
+
+/* Compacto */
+@media (max-width: 980px) {
+  .pi2-collab-item { min-width: 200px; }
+  .pi2-collab-role { display: none; }
+}
+@media (max-width: 720px) {
+  .pi2-collab-item { min-width: 160px; padding: 6px 8px; }
+  .pi2-collab-name { font-size: .85rem; }
+  .pi2-collab-avatar { width: 34px; height: 34px; }
+}
+/* Encabezado del formulario con iconos a la derecha */
+.form-section__head{
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+  gap:12px;
+  margin-bottom:14px;
+}
+
+.form-section__title h3{ margin:0; color:#1e293b; }
+.form-section__title p{ margin:2px 0 0; color:#64748b; }
+
+/* Reusar .pi2-actions pero un pelín más grande en el formulario */
+.form-section .pi2-actions{ gap:12px; }
+.form-section .pi2-action{ width:20px; height:auto; border-radius:8px; }
+
+/* Responsive: si el ancho es chico, que se vayan abajo */
+@media (max-width: 720px){
+  .form-section__head{ flex-wrap:wrap; }
+  .form-section .pi2-actions{ width:100%; justify-content:flex-start; }
+}
+
+.pi2-core-card.is-lead{ border-color:#3b82f6; box-shadow:0 2px 6px rgba(59,130,246,.12); }
+
+.pi2-core-person{ display:flex; align-items:center; gap:12px; }
+.pi2-core-avatar{
+  width:56px; height:56px; border-radius:50%; object-fit:cover;
+  box-shadow: 0 0 0 3px #f8fafc;
+}
+.pi2-core-meta{ line-height:1.15; }
+.pi2-core-name{ font-weight:800; color:#0f172a; }
+.pi2-core-role{ font-size:.9rem; color:#64748b; }
+
+/* Ajuste del bloque del jefe dentro de la tarjeta */
+.pi2-core-card .pi2-owner{ display:flex; align-items:center; gap:12px; }
+.pi2-core-card .pi2-owner-title{ font-size:.9rem; color:#64748b; margin-bottom:2px; }
+.pi2-core-card .pi2-owner-name{ font-weight:800; color:#0f172a; }
+.pi2-core-card .pi2-owner-tags{ margin-top:6px; }
+
+/* El carrusel ahora va debajo, con un pequeño margen */
+.project-info-bar .pi2-collab.scroller{ margin-top:6px; }
+
+
+/* =============  MODO COMPACTO / LIMPIO PARA LOS DESTACADOS  ============= */
+
+/* generales */
+.pi2-core{ padding:18px; gap:16px; }
+.pi2-core-card{ min-height:140px; box-shadow:0 6px 18px rgba(2,6,23,.06); }
+.pi2-core-avatar{ width:64px; height:64px; }
+
+/* -------- LEAD (Jefe de Proyecto): solo 2 métricas y sin iconería de apps -------- */
+.pi2-core-card.is-lead .pi2-owner-tags .chip:nth-child(n+2){ display:none; } /* deja solo 1 chip */
+.pi2-core-card.is-lead .qa-row{ display:none; }                               /* saca Planner/Teams/SP */
+
+.pi2-core-card.is-lead .pi2-metrics .metric:nth-child(2){ display:none; }     /* oculta Presupuesto */
+.pi2-core-card.is-lead .pi2-metrics{ grid-template-columns: repeat(2,minmax(0,1fr)); gap:14px; }
+.pi2-core-card.is-lead .metric-icon{ width:32px; height:32px; }
+
+/* estado discreto */
+.pi2-core-card.is-lead .status-badge{
+  background:rgba(34,197,94,.1); color:#075e54; border-color:rgba(7,94,84,.08);
+}
+
+/* -------- SECUNDARIOS: identidad + 2 KPIs + CTA -------- */
+.pi2-core-card:not(.is-lead) .member-tags{ display:none; }                     /* quita chips extra */
+.pi2-core-card:not(.is-lead) .member-kpis .mini-kpi:nth-child(3){ display:none; } /* deja 2 KPIs */
+
+.pi2-core-card:not(.is-lead) .member-grid{
+  grid-template-columns: auto 1fr auto;                                       /* avatar | texto/kpis | botón */
+  align-items: center; gap:14px;
+}
+.pi2-core-card:not(.is-lead) .member-id{ gap:12px; }
+.pi2-core-card:not(.is-lead) .member-kpis{ grid-template-columns:1fr 1fr; gap:10px; }
+.pi2-core-card:not(.is-lead) .btn-ghost{ white-space:nowrap; }
+
+/* tipografía más clara y respiración */
+.lead-id-text .pi2-owner-title,
+.member-text .pi2-core-role{ color:#667085; }
+.mini-kpi span, .metric-text span{ color:#6b7280; }
+
+/* hover sobrio */
+.pi2-core-card:hover{ transform: translateY(-1px); box-shadow:0 10px 22px rgba(2,6,23,.10); }
+
+
+
+
+
+
+.pi2-core-card:hover{
+  transform: translateY(-2px);
+  border-color:#d7deea;
+  box-shadow:0 14px 36px rgba(15,23,42,.10);
+}
+
+
+/* Avatar y tipografías */
+.pi2-core-avatar, .pi2-avatar{ width:72px; height:72px; border-radius:50%; object-fit:cover; }
+.pi2-core-meta, .pi2-owner-data{ display:flex; flex-direction:column; gap:4px; }
+.pi2-owner-title, .pi2-core-role{ color:#667085; font-size:.9rem; }
+.pi2-owner-name, .pi2-core-name{ color:#0f172a; font-weight:800; font-size:1.12rem; letter-spacing:.2px; }
+.pi2-owner-tags{ margin-top:6px; }
+.chip{ background:#f1f5f9; border:1px solid #e2e8f0; }
+
+/* Mini banda de info al pie (sin tocar HTML) */
+.pi2-core-card::after{
+  content:"";
+  position:absolute; left:18px; right:18px; bottom:14px; height:1px;
+  background: linear-gradient(90deg, rgba(15,23,42,.08), transparent 40%, transparent 60%, rgba(15,23,42,.08));
+  opacity:.6;
+}
+.pi2-core-card.is-lead::after{ opacity:.9; }
+
+/* Variante compacta para las 2 secundarias: mismas reglas, menos “ruido” */
+.pi2-core-card:not(.is-lead){
+  grid-template-columns: auto 1fr;
+  min-height:120px;
+}
+
+
+.pi2-core-card:hover{ transform: translateY(-2px); box-shadow:0 14px 34px rgba(2,6,23,.10); border-color:#dbe2f0; }
+
+
+/* Avatar + texto */
+.pi2-core-avatar{ width:68px; height:68px; border-radius:50%; object-fit:cover; box-shadow:0 0 0 3px #f8fafc; }
+.pi2-core-meta{ line-height:1.15; }
+.pi2-core-name{ font-weight:800; color:#0f172a; font-size:1.06rem; letter-spacing:.2px; }
+.pi2-core-role{ font-size:.9rem; color:#64748b; margin-top:2px; }
+
+/* KPIs pequeños de las secundarias (2 chips, sobrios) */
+.pi2-core-kpis{ display:flex; gap:8px; margin-top:8px; }
+.pi2-core-kpis .kpi{
+  display:inline-flex; align-items:center; gap:6px;
+  padding:6px 10px; border-radius:999px; font-size:.78rem; font-weight:700;
+  background:#f8fafc; color:#0f172a; border:1px solid #e6e9f0;
+}
+.pi2-core-kpis .kpi i{ color:#647dee; font-size:.86rem; }
+
+/* Líder con composición más “llena” sin tocar HTML */
+.pi2-core-card.is-lead{
+  padding-right:28px;
+  background:
+    radial-gradient(900px 140px at 15% -60%, rgba(99,102,241,.10), transparent 60%),
+    radial-gradient(900px 140px at 85% -60%, rgba(59,130,246,.08), transparent 60%),
+    #fff;
+}
+.pi2-core-card.is-lead .pi2-avatar{ width:72px; height:72px; }
+.pi2-core-card.is-lead .pi2-owner-name{ font-size:1.12rem; }
+
+
+
+
+/* Quita adornos previos que metían ruido */
+.pi2-core-card::before,
+.pi2-core-card::after{ content:none !important; }
+
+/* Avatar y texto – unifica ambos markups (lead y secundarios) */
+.pi2-avatar,
+.pi2-core-avatar{
+  width:68px; height:68px; border-radius:50%;
+  object-fit:cover; display:block;
+  box-shadow:0 0 0 3px #f8fafc;
+}
+.pi2-owner-data,
+.pi2-core-meta{ display:flex; flex-direction:column; gap:4px; }
+
+.pi2-owner-title,
+.pi2-core-role{ font-size:.9rem; color:#667085; }
+
+.pi2-owner-name,
+.pi2-core-name{
+  color:#0f172a; font-weight:800; letter-spacing:.2px; font-size:1.06rem;
+  display:flex; align-items:center; gap:8px;
+}
+.pi2-owner-name i{ color:#111827; }
+
+/* Chip del líder (dejamos solo uno para limpieza) */
+.pi2-owner-tags .chip:nth-child(n+2){ display:none; }
+
+/* Mini “pie” decorativo para cerrar visualmente cada card (sin recargar) */
+.pi2-core-card ._divider{
+  display:none;
+}
+.pi2-core-card::after{
+  content:""; position:absolute; left:18px; right:18px; bottom:14px; height:1px;
+  background: linear-gradient(90deg, rgba(15,23,42,.08), transparent 40%, transparent 60%, rgba(15,23,42,.08));
+  opacity:.65;
+}
+
+/* Carrusel más separado para que no compita */
+.project-info-bar .pi2-collab.scroller{
+  margin-top:8px; 
+  padding-top:10px;
+ 
+}
+
+  /* Tarjeta base — limpia y consistente */
+  .pi2-core-card{
+    position: relative;
+    display: grid;
+    grid-template-columns: auto 1fr;   /* avatar | texto */
+    align-items: center;
+    gap: 14px;
+    min-height: 112px;
+    padding: 14px 16px;
+    border-radius: 16px;
+    border: 1px solid #e5e9f2;
+    background:
+      radial-gradient(900px 180px at 0% -70%, rgba(99,102,241,.07), transparent 60%),
+      #ffffff;
+    box-shadow: 0 6px 18px rgba(15,23,42,.06);
+    transition: transform .16s ease, box-shadow .16s ease, border-color .16s ease;
+    overflow: hidden;
+  }
+  .pi2-core-card:hover{
+    transform: translateY(-2px);
+    border-color: #d7deea;
+    box-shadow: 0 12px 28px rgba(15,23,42,.10);
+  }
+  
+  
+  /* Avatar + texto */
+  .pi2-core-avatar{
+    width: 56px; height: 56px; border-radius: 50%; object-fit: cover;
+    box-shadow: 0 0 0 3px #f8fafc;
+  }
+  .pi2-core-meta{ display:flex; flex-direction:column; gap: 4px; line-height: 1.15; }
+  
+  .pi2-core-name{
+    color:#0f172a; font-weight: 800; font-size: 1.02rem; letter-spacing:.2px;
+  }
+  .pi2-core-role{
+    color:#64748b; font-size: .9rem;
+  }
+  
+  /* Chip bajo el nombre (si existe en el HTML) */
+  .pi2-owner-tags{ margin-top: 8px; display:flex; gap:8px; flex-wrap: wrap; }
+  .chip{
+    display:inline-flex; align-items:center; gap:6px;
+    padding:6px 10px; border-radius:999px;
+    font-size:.78rem; font-weight:700;
+    background:#eef2f7; color:#0f172a; border:1px solid #e1e7ef;
+  }
+  .chip i{ font-size:.9rem; color:#647dee; }
+  
+  /* KPIs chiquitos (solo en secundarias si los usas) */
+  .pi2-core-kpis{ margin-top: 8px; display:flex; gap:8px; }
+  .pi2-core-kpis .kpi{
+    display:inline-flex; align-items:center; gap:6px;
+    padding:6px 10px; border-radius:999px;
+    font-size:.78rem; font-weight:700;
+    background:#f8fafc; color:#0f172a; border:1px solid #e6e9f0;
+  }
+  .pi2-core-kpis .kpi i{ font-size:.9rem; color:#647dee; }
+
+
+
+  /* === Destacados: 3 columnas iguales, estables === */
+.project-info-bar.v2 .pi2-core{
+  display: grid !important;
+  grid-template-columns: repeat(3, minmax(280px, 1fr)) !important; /* 3 iguales */
+  gap: 16px !important;
+  padding: 12px 14px !important;
+  align-items: start;              /* todas alineadas arriba */
+}
+
+/* nunca más spans raros heredados */
+.project-info-bar.v2 .pi2-core > *{
+  grid-column: auto !important;
+}
+
+/* card consistente: ocupa el alto disponible y no fuerza ancho */
+.project-info-bar.v2 .pi2-core-card{
+  width: 100% !important;
+  height: 100%;
+  display: grid;
+  grid-template-columns: auto 1fr;   /* avatar | texto */
+  align-items: center;
+  gap: 14px;
+  min-height: 116px;
+  padding: 16px 18px;
+  border-radius: 16px;
+  border: 1px solid #e6e9f0;
+  background: #fff;
+  box-shadow: 0 8px 20px rgba(15,23,42,.06);
+}
+
+/* avatar + textos (unificados) */
+.project-info-bar.v2 .pi2-core-avatar{
+  width: 56px; height: 56px; border-radius: 50%; object-fit: cover;
+  box-shadow: 0 0 0 3px #f8fafc;
+}
+.project-info-bar.v2 .pi2-core-meta{ display:flex; flex-direction:column; gap:4px; line-height:1.15; }
+.project-info-bar.v2 .pi2-core-name{ font-weight:800; color:#0f172a; font-size:1.02rem; letter-spacing:.2px; }
+.project-info-bar.v2 .pi2-core-role{ color:#64748b; font-size:.9rem; }
+
+/* chips opcionales: sobrios, en línea */
+.project-info-bar.v2 .pi2-owner-tags{ margin-top:8px; display:flex; gap:8px; flex-wrap:wrap; }
+.project-info-bar.v2 .chip{
+  display:inline-flex; align-items:center; gap:6px;
+  padding:6px 10px; border-radius:999px; font-size:.78rem; font-weight:700;
+  background:#f8fafc; color:#0f172a; border:1px solid #e2e8f0;
+}
+
+/* responsive: 2 columnas y luego 1 */
+@media (max-width: 1100px){
+  .project-info-bar.v2 .pi2-core{ grid-template-columns: repeat(2, minmax(260px, 1fr)) !important; }
+}
+@media (max-width: 720px){
+  .project-info-bar.v2 .pi2-core{ grid-template-columns: 1fr !important; }
+}
+/* ==== Ocultar scroll horizontal en el carrusel ==== */
+
+.pi2-collab::-webkit-scrollbar {
+  display: none !important;   /* Chrome, Safari */
+}
+
+.pi2-collab {
+  -ms-overflow-style: none !important;  /* IE y Edge */
+  scrollbar-width: none !important;     /* Firefox */
+  overflow-x: hidden !important;        /* bloquea scroll manual */
+}
+.pi2-title{
+  font-size: 1.3rem;
+  font-weight: 700;
+  color: #0f172a;
+}
+.pi2-subtitle{
+  font-size: 1rem;
+  font-weight: 600;
+  color: #334155;
+}
+.pi2-core-email{
+  font-size: 0.8rem;
+  color: #64748b;
+}
+/* === Gato flotando con sombra + aura holográfica (sin tocar HTML) === */
+
+/* Asegura que el fill del SVG lo controle el color */
+.top-bar-right svg [fill]{
+  fill: currentColor !important;
+}
+
+/* El contenedor es la referencia para los pseudo-elementos */
+.top-bar-right{
+  position: relative;
+}
+
+/* Gato: blanco, con ligera flotación */
+.top-bar-right svg{
+  position: relative;
+  z-index: 2;                  /* por delante del brillo y la sombra */
+  color: #ffffff;              /* mantiene el gato blanco */
+  animation: catFloat 4.2s ease-in-out infinite;
+  will-change: transform;
+}
+
+/* Sombra elíptica flotando bajo el gato */
+.top-bar-right::after{
+  content: "";
+  position: absolute;
+  right: 18px;                 /* ajusta si cambias el ancho del svg */
+  bottom: 10px;
+  width: 90px;                 /* ~ ancho del gato */
+  height: 16px;
+  background: radial-gradient(ellipse at center,
+              rgba(0,0,0,.35) 0%, rgba(0,0,0,.2) 40%,
+              rgba(0,0,0,0) 70%);
+  filter: blur(6px);
+  transform-origin: center;
+  z-index: 1;
+  animation: shadowFloat 4.2s ease-in-out infinite;
+  pointer-events: none;
+}
+
+/* Aura / brillo holográfico detrás del gato (blend + blur) */
+.top-bar-right::before{
+  content:"";
+  position:absolute;
+  right: 6px;                  /* centrar detrás del svg */
+  top: 50%;
+  transform: translateY(-50%);
+  width: 120px;
+  height: 120px;
+  border-radius: 50%;
+  background: conic-gradient(
+    from 0deg,
+    #7c3aed, #22d3ee, #06b6d4, #a78bfa, #7c3aed
+  );
+  filter: blur(16px) saturate(1.1);
+  opacity: .55;                /* intensidad del glow */
+  mix-blend-mode: screen;      /* se integra con tu degradado violeta */
+  z-index: 0;
+  animation: holoSpin 9s linear infinite;
+  pointer-events: none;
+}
+
+/* Animaciones */
+@keyframes catFloat{
+  0%,100%{ transform: translateY(0) }
+  50%    { transform: translateY(-4px) }
+}
+@keyframes shadowFloat{
+  0%,100%{ transform: scale(1);   opacity:.85; }
+  50%    { transform: scale(.95); opacity:.65; }
+}
+@keyframes holoSpin{
+  from{ transform: translateY(-50%) rotate(0deg); }
+  to  { transform: translateY(-50%) rotate(360deg); }
+}
+/* Contenedor del gato (usa tu .top-bar-right) */
+.top-bar-right{
+  position: relative;
+}
+
+/* Reemplazo del gato: silueta.svg con degradado */
+.top-bar-right::before{
+  content:"";
+  display: block;
+  width: 120px;   /* ajusta al tamaño que quieras */
+  height: 49px;
+  
+  background: linear-gradient(135deg, #7c3aed, #06b6d4, #ec4899, #facc15, #7c3aed);
+  background-size: 400% 400%;
+  -webkit-mask: url("../img/silueta.svg") no-repeat center/contain;
+  mask: url("../img/silueta.svg") no-repeat center/contain;
+
+  animation: holoGradient 8s ease infinite, catFloat 4s ease-in-out infinite;
+  z-index: 2;
+  margin-left: auto;   /* si quieres alinearlo a la derecha */
+  margin-right: 20px;  /* un poquito de espacio */
+  top: 6px;
+    right: -20px;
+}
+
+/* sombra flotante debajo */
+.top-bar-right::after{
+  content:"";
+  position:absolute;
+  right: 40px;          /* alinea con la silueta */
+  bottom: 6px;
+  width: 90px;
+  height: 14px;
+  background: radial-gradient(ellipse at center,
+              rgba(0,0,0,.4) 0%, rgba(0,0,0,0) 70%);
+  filter: blur(6px);
+  opacity:.6;
+  z-index:1;
+}
+
+/* Animaciones */
+@keyframes holoGradient {
+  0%   { background-position: 0% 50%; }
+  50%  { background-position: 100% 50%; }
+  100% { background-position: 0% 50%; }
+}
+@keyframes catFloat {
+  0%,100% { transform: translateY(0); }
+  50%     { transform: translateY(-4px); }
+}
+/* ===== Card variante suave para diferenciarla de la principal ===== */
+.data-card.variant-soft{
+  border: 1px solid #e6edf6;
+  background: linear-gradient(180deg,#ffffff,#fbfdff);
+  border-radius: 12px 12px 0 0;
+}
+
+.card-header-compact{
+  display:flex; justify-content:space-between; align-items:flex-start;
+  padding: 14px 16px 8px;
+  border-bottom: 1px solid #eef2f7;
+  background: linear-gradient(90deg, rgba(124,58,237,.08), rgba(6,182,212,.06));
+  border-radius: 12px 12px 0 0;
+}
+.card-title{
+  margin:0; font-weight:800; color:#0f172a; display:flex; align-items:center; gap:10px;
+}
+.card-title i{ color:#7c3aed; }
+.card-subtitle{ margin:4px 0 0; color:#64748b; }
+
+.badge-soft{
+  display:inline-flex; align-items:center; gap:8px;
+  padding:6px 10px; border-radius:999px; font-weight:700; font-size:.78rem;
+  background:#eef2ff; color:#3730a3; border:1px solid #dbe4ff;
+}
+
+/* ===== Tabla compacta ===== */
+.table-wrapper.table--compact .table{
+  border-collapse: separate; border-spacing: 0 10px;
+}
+.table-wrapper.table--compact tbody tr{
+  background:#fff; border:1px solid #e6edf6; border-radius:12px;
+  box-shadow:0 6px 14px rgba(15,23,42,.06);
+}
+.table-wrapper.table--compact tbody td,
+.table-wrapper.table--compact thead th{
+  padding:12px 14px;
+}
+.table-wrapper.table--compact thead th{
+  background:#f6f9fc; 
+  color:#334155; 
+  font-weight:700;
+  text-align: left;
+}
+
+/* Estados (reutiliza tu paleta) */
+.status-pill{
+  display:inline-flex; align-items:center; gap:8px;
+  padding:6px 10px; border-radius:999px; font-weight:700; font-size:.78rem;
+}
+.status-pill.ok{ background:#e8faf3; color:#065f46; border:1px solid #c7f0df; }
+.status-pill.review{ background:#fff5e6; color:#92400e; border:1px solid #fde3b6; }
+.status-pill.late{ background:#ffe5e7; color:#991b1b; border:1px solid #ffc8cd; }
+
+/* Botones acción */
+.btn-icon{
+  width:34px; height:34px; border-radius:10px; display:grid; place-items:center;
+  border:1px solid #e6edf6; background:#fff; color:#0f172a;
+  box-shadow:0 3px 8px rgba(15,23,42,.08);
+  transition: transform .15s ease, box-shadow .15s ease;
+}
+.btn-icon:hover{ transform: translateY(-1px); box-shadow:0 6px 14px rgba(15,23,42,.12); }
+.btn-edit{ color:#3b82f6; border-color:#dbeafe; background:#eff6ff; }
+.btn-delete{ color:#f97316; border-color:#ffe4d6; background:#fff7ed; }
+.btn-duplicate{ color:#0ea5a4; border-color:#c7f2f2; background:#ecfeff; }  /* <— NUEVO color */
+/* Forzar la card a ocupar todo el ancho */
+#last-load,
+#last-load .table-wrapper{
+  width: 100% !important;
+}
+
+/* Tabla al 100% */
+#last-load .table{
+  width: 100%;
+  table-layout: auto;
+}
+
+/* Texto más oscuro en cabecera y filas */
+#last-load .table th,
+#last-load .table td{
+  color: #0f172a !important;   /* casi negro */
+}
+
+/* Encabezado título/subtítulo en oscuro */
+#last-load .card-title{
+  color: #0f172a !important;
+}
+#last-load .card-subtitle{
+  color: #334155 !important;   /* gris más fuerte */
+}
+
+
+/* ===========================
+   Notebook 1366 — modo compacto
+   =========================== */
+   @media (max-width: 1400px){
+
+    /* Sidebar más delgado */
+    .sidebar{
+      width: 260px;
+      padding: 16px 14px 0 14px;
+    }
+    .logo-box img{ width: 110px; }
+    .search-box{ padding: 6px 10px; margin-bottom: 12px; }
+    .project-list li{ padding: 6px 8px; gap: 6px; font-size: .80em; }
+    .section-title{ font-size: .72em; margin-bottom: 8px; }
+    .badge{ font-size: .60em; padding: 2px 6px; }
+  
+    /* Área principal con menos respiración lateral */
+    .main{ padding: 22px; }
+  
+    /* Top bar compacta (sin escalar el gato) */
+    .top-bar{ padding: 12px 16px; border-radius: 12px; }
+    .top-bar-left h1{ font-size: 1.35rem; }
+    .top-bar-left p{ font-size: .90rem; }
+  
+    /* Ajuste del glow/sombra del gato (mismo tamaño de la figura) */
+    .top-bar-right{ gap: .6rem; }
+
+  
+    /* Cards: 4 columnas estables y compactas */
+    .cards{
+      grid-template-columns: repeat(4, minmax(0,1fr));
+      gap: 16px;
+      margin-bottom: 24px;
+    }
+    .card{ padding: 18px; }
+    .card .label{ font-size: .80rem; }
+    .card .value{ font-size: 1.6rem; }
+  
+    /* Formulario más ceñido */
+    .form-section{ padding: 16px; }
+    .form-row{ gap: 12px; }
+    .form-row select,
+    .form-row input,
+    .form-row textarea{
+      min-width: 150px;
+      padding: 8px 10px;
+      font-size: .88em;
+    }
+  
+    /* Tabla principal: densidad amistosa */
+    .card-table{ padding: 14px; }
+    .card-table__head h3{ font-size: 1.05rem; }
+    .table-controls__search input{ min-width: 200px; } /* antes 260px */
+    .pretty-table thead th{ padding: 10px 12px; }
+    .pretty-table tbody td{ padding: 10px 12px; }
+    .pretty-table .icon-btn{ width: 32px; height: 32px; }
+    .table-foot{ padding: 10px 0 0; }
+  
+    /* “Última carga realizada” en compacto */
+    #last-load .table-wrapper.table--compact thead th,
+    #last-load .table-wrapper.table--compact tbody td{
+      padding: 10px 12px;
+    }
+  }
+  /* ==========================================================
+   TIPOGRAFÍAS + DENSIDAD COMPACTA (notebooks 1366 / <= 1400px)
+   ========================================================== */
+@media (max-width: 1400px){
+
+  /* 1) Escala global suave (de ~16px a ~15px) */
+  html{ font-size: 93.75%; } /* 15px base */
+
+  /* 2) Sidebar: listas y títulos más pequeños */
+  .section-title{ font-size: .70rem; letter-spacing:.2px; }
+  .project-list li{ font-size: .80rem; line-height: 1.25; }
+  .search-box input{ font-size: .85rem; }
+
+  /* 3) Top bar (títulos/desc) */
+  .top-bar-left h1{ font-size: 1.20rem; line-height:1.25; }
+  .top-bar-left p{ font-size: .85rem; }
+  .top-bar .meta, .top-bar .subtitle{ font-size: .80rem; }
+
+  /* 4) Cards (Hoy/Semana/Mes/Plazo) */
+  .card .label{ font-size: .75rem; }
+  .card .value{ font-size: 1.45rem; }
+  .card .icon{ font-size: 1rem; }
+
+  /* 5) Badges/pastillas de estado */
+  .badge{ font-size: .70rem; padding: 2px 6px; }
+  .status-pill{ font-size: .72rem; padding: 4px 10px; }
+  .badge-soft{ font-size: .72rem; }
+
+  /* 6) Tablas (encabezados, celdas, pie de tabla) */
+  .pretty-table thead th{ font-size: .85rem; }
+  .pretty-table tbody td{ font-size: .875rem; }
+  .table-foot, .table-foot *{ font-size: .80rem; }
+  .table-controls__search input{ font-size: .875rem; min-width: 180px; }
+  .table-controls__rows select{ font-size: .80rem; }
+  .page-btn{ font-size: .80rem; }
+
+  /* Botones de acción de tabla */
+  .icon-btn, .btn-icon{
+    width: 30px; height: 30px; font-size: .85rem;
+  }
+
+  /* 7) “Última carga realizada” (mismo ajuste que la tabla principal) */
+  #last-load .pretty-table thead th{ font-size: .85rem; }
+  #last-load .pretty-table tbody td{ font-size: .875rem; }
+
+  /* 8) Formulario */
+  .form-section__title h3{ font-size: 1.00rem; }
+  .form-row label{ font-size: .82rem; }
+  .form-row select,
+  .form-row input,
+  .form-row textarea{ font-size: .88rem; }
+
+  /* 9) Pequeños recortes de padding para que “respire” igual */
+  .card{ padding: 16px; }
+  .card-table{ padding: 12px; }
+  .form-section{ padding: 14px; }
+  .form-row{ gap: 10px; }
+}
+
+
+/* =========================================================
+   BREAKPOINT NOTEBOOK PEQUEÑO — <= 1280px (16:9 / 16:10)
+   ========================================================= */
+   @media (max-width: 1280px){
+
+    /* Sidebar más delgado */
+    .sidebar{
+      width: 240px;
+      padding: 14px 12px 0 12px;
+    }
+    .logo-box img{ width: 100px; }
+    .search-box{ padding: 6px 10px; margin-bottom: 10px; }
+    .search-box input{ font-size: .82rem; }
+    .section-title{ font-size: .68rem; margin-bottom: 6px; }
+    .project-list li{ padding: 6px 8px; gap: 6px; font-size: .78rem; line-height: 1.25; }
+    .badge{ font-size: .62rem; padding: 2px 6px; }
+  
+    /* Main con menos respiración */
+    .main{ padding: 18px; }
+  
+    /* Top bar compacta (no escalamos la silueta; solo reubicamos) */
+    .top-bar{ padding: 10px 14px; border-radius: 10px; }
+    .top-bar-left h1{ font-size: 1.10rem; line-height: 1.25; }
+    .top-bar-left p{ font-size: .80rem; }
+    /* Si usas la silueta con ::before/::after en .top-bar-right */
+    .top-bar-right{ gap: .5rem; }
+    
+    .top-bar-right::after { right: 24px; width: 78px;  height: 10px; } /* glow/sombra */
+  
+    /* Cards: 2 columnas */
+    .cards{
+      grid-template-columns: repeat(2, minmax(0,1fr));
+      gap: 14px;
+      margin-bottom: 20px;
+    }
+    .card{ padding: 14px; }
+    .card .label{ font-size: .72rem; }
+    .card .value{ font-size: 1.30rem; }
+    .card .icon{ font-size: .95rem; }
+  
+    /* Formulario más ceñido */
+    .form-section{ padding: 12px; }
+    .form-section__title h3{ font-size: 1rem; }
+    .form-row{ gap: 8px; }
+    .form-row label{ font-size: .80rem; }
+    .form-row select,
+    .form-row input,
+    .form-row textarea{ min-width: 140px; padding: 7px 9px; font-size: .84rem; }
+  
+    /* Tablas (mantenemos todo visible; habilitamos scroll horizontal si es necesario) */
+    .card-table{ padding: 10px; }
+    .card-table__head h3{ font-size: 1rem; }
+    .table-wrapper{ overflow-x: auto; -webkit-overflow-scrolling: touch; }
+  
+    .table-controls{ gap: 8px; }
+    .table-controls__search input{ min-width: 160px; padding: 7px 10px; font-size: .85rem; }
+    .table-controls__rows select{ font-size: .80rem; padding: 6px 8px; }
+  
+    .pretty-table thead th{ padding: 8px 10px; font-size: .82rem; }
+    .pretty-table tbody td{ padding: 8px 10px; font-size: .84rem; }
+    .table-foot, .table-foot *{ font-size: .78rem; }
+  
+    /* Botones de acción más chicos */
+    .icon-btn, .btn-icon{ width: 28px; height: 28px; font-size: .80rem; }
+  
+    /* Badges/pastillas más pequeñas */
+    .status-pill{ font-size: .70rem; padding: 4px 10px; }
+    .badge-soft{ font-size: .70rem; }
+  }
+  
+  /* Altura baja típica de notebook (optimiza el alto útil) */
+  @media (max-height: 720px){
+    .top-bar{ margin-bottom: 12px; }
+    .cards{ margin-bottom: 16px; }
+    .form-section{ margin-top: 12px; }
+  }
+/* ============================
+   Estado: chip responsivo PRO
+   ============================ */
+
+/* 0) Base: evita quiebres raros en la columna Estado */
+#hoursTable th:nth-child(7),
+#hoursTable td:nth-child(7),
+#lastLoadTable th:nth-child(7),
+#lastLoadTable td:nth-child(7){
+  white-space: nowrap;
+}
+
+/* 1) Modo compacto leve (<=1400): reduce padding y fuente */
+@media (max-width: 1400px){
+  .badge.status--ok,
+  .badge.status--review,
+  .badge.status--late,
+  .status-pill.ok,
+  .status-pill.review,
+  .status-pill.late{
+    font-size: .78rem;            /* antes ~.9 */
+    padding: 6px 10px;            /* antes 8–12px */
+    line-height: 1.2;
+  }
+
+  /* ancho sugerido de la columna */
+  #hoursTable th:nth-child(7), #hoursTable td:nth-child(7),
+  #lastLoadTable th:nth-child(7), #lastLoadTable td:nth-child(7){
+    width: 130px;
+  }
+}
+
+/* 2) Modo corto (<=1150): texto más breve + chip más chico */
+@media (max-width: 1150px){
+  /* ocultamos el texto original del span, dejamos el ícono visible */
+  .badge.status--ok,
+  .badge.status--review,
+  .badge.status--late,
+  .status-pill.ok,
+  .status-pill.review,
+  .status-pill.late{
+    font-size: 0;                 /* oculta texto del nodo */
+    padding: 6px 10px;
+    border-radius: 999px;
+  }
+  .badge i, .status-pill i{
+    font-size: .95rem;            /* tamaño del ícono */
+    margin-right: 0;
+    vertical-align: -1px;
+  }
+
+  /* Reinyectamos un texto corto con ::after según el estado */
+  .badge.status--ok::after,      .status-pill.ok::after      { content: "En plazo"; }
+  .badge.status--review::after,  .status-pill.review::after  { content: "Revisar";  }
+  .badge.status--late::after,    .status-pill.late::after    { content: "Fuera";    }
+
+  .badge.status--ok::after,
+  .badge.status--review::after,
+  .badge.status--late::after,
+  .status-pill.ok::after,
+  .status-pill.review::after,
+  .status-pill.late::after{
+    font-size: .72rem;            /* texto compacto */
+    margin-left: 6px;
+  }
+
+  /* achica aún más la columna */
+  #hoursTable th:nth-child(7), #hoursTable td:nth-child(7),
+  #lastLoadTable th:nth-child(7), #lastLoadTable td:nth-child(7){
+    width: 100px;
+  }
+}
+
+/* 3) Modo ultra-compacto (<=980): solo icono (con tooltip del title) */
+@media (max-width: 980px){
+  .badge.status--ok::after,
+  .badge.status--review::after,
+  .badge.status--late::after,
+  .status-pill.ok::after,
+  .status-pill.review::after,
+  .status-pill.late::after{
+    content: "";                  /* sin texto, solo ícono */
+  }
+
+  /* columna muy angosta y centrada */
+  #hoursTable th:nth-child(7), #hoursTable td:nth-child(7),
+  #lastLoadTable th:nth-child(7), #lastLoadTable td:nth-child(7){
+    width: 56px;
+    text-align: center;
+  }
+}
+/* ====== Estado: icon-only perfectamente centrado (<=980px) ====== */
+@media (max-width: 980px){
+
+  /* Oculta cualquier texto residual de ::after en los chips */
+  .badge.status--ok::after,
+  .badge.status--review::after,
+  .badge.status--late::after,
+  .status-pill.ok::after,
+  .status-pill.review::after,
+  .status-pill.late::after{
+    content: none !important;
+    display: none !important;
+  }
+
+  /* El ícono en bloque, sin márgenes ni baseline raros */
+  .badge i,
+  .status-pill i{
+    display: block;
+    margin: 0;
+    line-height: 1;
+    font-size: 0.95rem;           /* ajusta si lo quieres mayor/menor */
+    transform: none;
+  }
+
+  /* Columna angosta y centrada */
+  #hoursTable th:nth-child(7),
+  #hoursTable td:nth-child(7),
+  #lastLoadTable th:nth-child(7),
+  #lastLoadTable td:nth-child(7){
+    width: 64px;                  /* ancho consistente con padding de la celda */
+    text-align: center;
+    white-space: nowrap;
+  }
+}
+  
+/* ===== Estado = igual a los iconos de acción (solo icono) ===== */
+@media (max-width: 980px){
+
+  /* sin texto auxiliar */
+  .badge.status--ok::after,
+  .badge.status--review::after,
+  .badge.status--late::after,
+  .status-pill.ok::after,
+  .status-pill.review::after,
+  .status-pill.late::after{
+    content: none !important;
+    display: none !important;
+  }
+
+  /* caja exactamente como .btn-icon: 34x34, radio 10, blanco, sombra */
+  .badge.status--ok,
+  .badge.status--review,
+  .badge.status--late,
+  .status-pill.ok,
+  .status-pill.review,
+  .status-pill.late{
+    border-radius: 10px !important;
+  }
+
+
+  /* colores por estado (igual que tu paleta) */
+  .badge.status--ok, .status-pill.ok{
+    color:#065f46 !important;       /* verde */
+    border-color:#c7f0df !important;
+  }
+  .badge.status--review, .status-pill.review{
+    color:#92400e !important;       /* ámbar */
+    border-color:#fde3b6 !important;
+  }
+  .badge.status--late, .status-pill.late{
+    color:#991b1b !important;       /* rojo */
+    border-color:#ffc8cd !important;
+  }
+
+  /* columna “Estado” angosta y centrada como las demás */
+  #hoursTable th:nth-child(7),
+  #hoursTable td:nth-child(7),
+  #lastLoadTable th:nth-child(7),
+  #lastLoadTable td:nth-child(7){
+    width: 64px !important;
+    text-align: center !important;
+    white-space: nowrap;
+  }
+}
+/* ====== FIX: Estado del mismo tamaño y perfectamente centrado ====== */
+
+/* 1) Definimos un tamaño único para botones/iconos y lo reutilizamos */
+:root{ --btn-icon-size: 34px; }                  /* desktop por defecto */
+.btn-icon{ width:var(--btn-icon-size)!important; 
+           height:var(--btn-icon-size)!important; }
+
+/* mismas reglas de tus breakpoints: 30px (<=1400) y 28px (<=1280) */
+@media (max-width:1400px){ :root{ --btn-icon-size: 30px; } }
+@media (max-width:1280px){ :root{ --btn-icon-size: 28px; } }
+
+/* 2) Cuando el “Estado” se muestra en modo compacto/icon-only (<=980),
+      hagámoslo idéntico en tamaño a los botones adyacentes y centrado */
+@media (max-width:980px){
+
+  /* sin texto residual */
+  .status-pill.ok::after, .status-pill.review::after, .status-pill.late::after,
+  .badge.status--ok::after, .badge.status--review::after, .badge.status--late::after{
+    content:none !important; display:none !important;
+  }
+
+  /* — Tabla “Última carga” (usa .btn-icon cuadrado 10px) — */
+  .table-wrapper.table--compact td:nth-child(7) .status-pill,
+  .table-wrapper.table--compact td:nth-child(7) .badge{
+    width:var(--btn-icon-size) !important;
+    height:var(--btn-icon-size) !important;
+    display: flex;
+    justify-content: center;
+    gap: 0;
+  }
+  .table-wrapper.table--compact tbody td:nth-child(7){ text-align:center; }
+
+  /* Colores por estado (mismo look que ya tenías) */
+  .table-wrapper.table--compact .status-pill.ok,    .table-wrapper.table--compact .badge.status--ok   { color:#065f46 !important; border-color:#c7f0df !important; }
+  .table-wrapper.table--compact .status-pill.review,.table-wrapper.table--compact .badge.status--review{ color:#92400e !important; border-color:#fde3b6 !important; }
+  .table-wrapper.table--compact .status-pill.late,  .table-wrapper.table--compact .badge.status--late { color:#991b1b !important; border-color:#ffc8cd !important; }
+
+  /* — Tabla principal (.pretty-table) → si prefieres círculo como .icon-btn — */
+  .pretty-table td:nth-child(7) .status-pill,
+  .pretty-table td:nth-child(7) .badge{
+    width:var(--btn-icon-size) !important;
+    height:var(--btn-icon-size) !important;
+    justify-content: end;
+    padding:0 !important; margin:0 !important; line-height:1 !important;
+    border-radius:50% !important;          /* igual a .icon-btn circular */
+    background:#fff !important; border:1px solid #e6edf6 !important;
+    box-shadow:0 3px 8px rgba(15,23,42,.08) !important;
+    font-size:0 !important;
+  }
+  .pretty-table tbody td:nth-child(7){ text-align:center; }
+}
+/* =========================================================
+   TABLET 768 (portrait) — layout base + sidebar slide-in
+   ========================================================= */
+   @media (max-width: 768px){
+    .toggle-btn {
+      display: none;
+    }
+    .logo-top {
+      display: block;
+      width: 60%;
+      padding-bottom: 10px;
+    }
+
+    /* 1) El sidebar pasa a "offcanvas" fijo y oculto por defecto */
+    .sidebar{
+      position: fixed;
+      top: 0; left: 0; bottom: 0;
+      width: 300px;                      /* angosto en tablet */
+      transform: translateX(-100%);
+      transition: transform .25s ease;
+      z-index: 3000;
+      box-shadow: 0 10px 30px rgba(15,23,42,.24);
+    }
+    /* cuando abrimos (ver JS) */
+    body.sidebar-open .sidebar{ transform: translateX(0); }
+  
+    /* 2) Scrim/overlay para tapar el contenido cuando el menú está abierto */
+    body.sidebar-open::before{
+      content: "";
+      position: fixed; inset: 0;
+      background: rgba(2, 6, 23, .45);
+      backdrop-filter: blur(1px);
+      z-index: 2990;
+    }
+  
+    /* 3) El main ocupa todo el ancho (sin hueco del sidebar) */
+    .main{
+      padding: 16px;
+      margin-left: 0 !important;
+    }
+  
+    /* 4) Ajustes suaves de densidad (dejamos lo fino para los siguientes pasos) */
+    .cards{
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 12px;
+      margin-bottom: 16px;
+    }
+  
+    .card{ padding: 12px; }
+    .card .label{ font-size: .72rem; }
+    .card .value{ font-size: 1.25rem; }
+  
+    .card-table{ padding: 10px; }
+    .pretty-table thead th{ padding: 8px 10px; }
+    .pretty-table tbody td{ padding: 8px 10px; }
+  
+    /* 5) Topbar: solo reducción de respiración (sin tocar el tamaño del gato) */
+    .top-bar{ padding: 10px 12px; border-radius: 10px; }
+  
+    /* 6) El tooltip global siempre por encima del overlay/sidebar */
+    #smart-tooltip{ position: fixed; z-index: 4001; }
+  
+/* ===== Botón flotante para abrir/cerrar el sidebar en tablet ===== */
+
+  .sidebar-trigger{
+    position: fixed;
+    top: 14px; right: 14px;
+    width: 42px; height: 42px;
+    display: grid; place-items: center;
+    border-radius: 12px;
+    background: #ffffff;
+    border: 1px solid #e6edf6;
+    box-shadow: 0 6px 20px rgba(15,23,42,.12);
+    color: #0f172a;
+    z-index: 4002;                 /* por encima del overlay del body */
+    cursor: pointer;
+    transition: transform .12s ease, box-shadow .12s ease;
+  }
+  .sidebar-trigger:hover{ transform: translateY(-1px); box-shadow: 0 10px 24px rgba(15,23,42,.16); }
+  .sidebar-trigger i{ font-size: 1.05rem; line-height: 1; }
+
+  /* estado abierto: cambia a “X” y colorcito */
+  body.sidebar-open .sidebar-trigger{
+    color: #fff; background: #111827; border-color: transparent;
+  }
+/* ====== OFF-CANVAS TABLET: fuerza el slide-in/out ====== */
+
+  .sidebar{
+    transform: translateX(-100%) !important;
+  }
+  body.sidebar-open .sidebar{
+    transform: translateX(0) !important;
+  }
+  .top-bar-right {
+    right: 45px;
+    gap: 1rem;
+  }
+}
+  
+/* ===== Top bar compacto (mobile ≤600px) ===== */
+@media (max-width: 600px){
+  :root{ --trigger-size: 42px; --trigger-gap: 10px; }
+
+  .top-bar{
+    position: relative;
+    display: block;                /* apilado simple */
+    padding: 12px 14px;
+    border-radius: 12px;
+    min-height: 96px;              /* espacio cómodo bajo el gato */
+  }
+
+  /* Columna izquierda: reservamos hueco para el botón flotante */
+  .top-bar-left{
+    padding-right: calc(var(--trigger-size) + var(--trigger-gap) + 8px);
+  }
+  .top-bar-left h1{
+    font-size: 1.1rem;
+    line-height: 1.2;
+    margin: 0 0 2px;
+  }
+
+  /* La fecha se muestra en línea bajo el título (cuando la movamos con JS) */
+  .top-bar .fecha-actual{
+    display: block;
+    font-weight: 600;
+    font-size: .92rem;
+    color: #fff;
+    opacity: .95;
+    margin-top: 2px;
+  }
+
+  /* Contenedor del gato: fijo arriba-derecha */
+  .top-bar-right{
+    position: absolute;
+    bottom: 8px;
+    right: 10px;
+    display: block;
+  }
+
+
+
+  /* Tarjetas: 1 columna en teléfonos */
+  .cards{
+    grid-template-columns: 1fr;
+    gap: 12px;
+    margin-bottom: 14px;
+  }
+}
+/* ==========================================================
+   Tablas -> Cards (sin scroll horizontal)  —  ≤600px
+   ========================================================== */
+   @media (max-width: 600px){
+
+    /* Oculta encabezados, el cuerpo pasa a tarjetas apiladas */
+    #hoursTable thead, #lastLoadTable thead { display: none; }
+  
+    #hoursTable tbody tr,
+    #lastLoadTable tbody tr{
+      display: block;
+      background: #fff;
+      border-radius: 14px;
+      box-shadow: 0 6px 18px rgba(15,23,42,.06);
+      padding: 10px 12px;
+      margin: 10px 0;
+    }
+  
+    /* Cada celda = [etiqueta][valor] en 2 columnas */
+    #hoursTable tbody td,
+    #lastLoadTable tbody td{
+      display: grid;
+      grid-template-columns: 120px 1fr;  /* etiqueta | valor */
+      gap: 8px;
+      align-items: center;
+      padding: 6px 0;
+      border: 0;
+    }
+  
+    /* La etiqueta se toma de data-th (la añadiremos por JS) */
+    #hoursTable tbody td::before,
+    #lastLoadTable tbody td::before{
+      content: attr(data-th);
+      font-weight: 600;
+      color: #64748b;
+      font-size: .8rem;
+    }
+  
+    /* Ajustes visuales rápidos */
+    #hoursTable tbody tr:first-child,
+    #lastLoadTable tbody tr:first-child{ margin-top: 12px; }
+  
+    /* Estado: usa chip compacto y no muestra “Estado:” como etiqueta */
+    #hoursTable tbody td:nth-child(7)::before,
+    #lastLoadTable tbody td:nth-child(7)::before{ content: ""; }
+  
+    /* Columnas de acciones al final en una misma línea, sin etiqueta */
+    /* hoursTable: normalmente las 2 últimas son acciones */
+    #hoursTable tbody td:nth-last-child(-n+2){
+      display: flex; gap: 8px; align-items: center;
+    }
+    #hoursTable tbody td:nth-last-child(-n+2)::before{ content: ""; }
+  
+    /* lastLoadTable: suelen ser las 3 últimas (Duplicar/Editar/Eliminar) */
+    #lastLoadTable tbody td:nth-last-child(-n+3){
+      display: flex; gap: 8px; align-items: center;
+    }
+    #lastLoadTable tbody td:nth-last-child(-n+3)::before{ content: ""; }
+  
+    /* Botones de acción algo más chicos en móvil */
+    .btn-icon, .icon-btn{ width: 34px; height: 34px; }
+  }
+/* ====== Mobile cards: volver a mostrar títulos para Estado y Acciones ====== */
+@media (max-width: 600px){
+
+  /* 1) Estado: vuelve a mostrar la etiqueta "Estado" */
+  #hoursTable tbody td:nth-child(7)::before,
+  #lastLoadTable  tbody td:nth-child(7)::before{
+    content: attr(data-th) !important; /* "Estado" */
+  }
+
+  /* 2) Acciones (Duplicar/Editar/Eliminar): muestra los títulos por celda */
+  /* hoursTable: las 2 últimas columnas son acciones */
+  #hoursTable tbody td:nth-last-child(-n+2){
+    display: grid !important;
+    grid-template-columns: 120px 1fr !important;  /* etiqueta | icono */
+    gap: 8px !important;
+    align-items: center;
+  }
+  #hoursTable tbody td:nth-last-child(-n+2)::before{
+    content: attr(data-th) !important;  /* "Duplicar" / "Editar" */
+  }
+
+  /* lastLoadTable: las 3 últimas son acciones */
+  #lastLoadTable tbody td:nth-last-child(-n+3){
+    display: grid !important;
+    grid-template-columns: 120px 1fr !important;
+    gap: 8px !important;
+    align-items: center;
+    padding: 10px 12px !important;
+  }
+  #lastLoadTable tbody td:nth-last-child(-n+3)::before{
+    content: attr(data-th) !important;  /* "Duplicar" / "Editar" / "Eliminar" */
+  }
+
+  /* Opcional: asegura el mismo tamaño de los botones en móvil */
+  .btn-icon, .icon-btn{ width: 34px; height: 34px; }
+}
+/* ==== Mobile cards (≤600px): Estado centrado + Acciones en una banda ==== */
+@media (max-width: 600px){
+
+  /* Estado: centra perfecto y usa un chip consistente */
+  #hoursTable tbody td:nth-child(7),
+  #lastLoadTable  tbody td:nth-child(7){
+    align-items: center;               /* etiqueta + valor centrados */
+  }
+  #hoursTable tbody td:nth-child(7) > *,
+  #lastLoadTable  tbody td:nth-child(7) > *{
+    display: inline-grid;
+    place-items: center;
+    width: 34px; height: 34px;         /* mismo tamaño que los iconos */
+    border-radius: 10px;
+    background: #fff;
+    border: 1px solid #e6edf6;
+    box-shadow: 0 3px 8px rgba(15,23,42,.08);
+  }
+
+  /* Oculta las celdas de acciones originales (las reagrupamos por JS) */
+  #hoursTable    tbody tr.mobile-processed td.mobile-hide,
+  #lastLoadTable tbody tr.mobile-processed td.mobile-hide{
+    display: none !important;
+  }
+
+  /* Nueva celda "Acciones" (insertada por JS) */
+  td.mobile-actions{
+    display: grid !important;
+    grid-template-columns: 120px 1fr !important; /* etiqueta | botones */
+    gap: 8px !important;
+    align-items: center !important;
+    padding: 6px 0 !important;
+  }
+  td.mobile-actions::before{
+    content: attr(data-th);
+    font-weight: 600;
+    color: #64748b;
+    font-size: .8rem;
+  }
+
+  /* Contenedor de los 3 botones ocupando el ancho; separación uniforme */
+  .actions-wrap{
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    gap: 10px;
+    width: 100%;
+  }
+  .actions-wrap .btn-icon,
+  .actions-wrap .icon-btn{
+    width: 38px;   /* puedes bajar a 34 si prefieres más compacto */
+    height: 38px;
+  }
+}
+/* ===== Mobile cards: alinear "Estado" + acciones más grandes ===== */
+@media (max-width: 600px){
+
+  /* 1) Centrado vertical de TODAS las etiquetas (incluye "Estado") */
+  #hoursTable tbody td::before,
+  #lastLoadTable  tbody td::before{
+    align-self: center !important;   /* etiqueta centrada en la fila */
+    line-height: 1.2;
+  }
+
+  /* 2) La celda de "Estado" mantiene el chip alineado y consistente */
+  #hoursTable tbody td:nth-child(7),
+  #lastLoadTable  tbody td:nth-child(7){
+    align-items: center !important;  /* etiqueta + chip centrados */
+    text-align: left !important;
+  }
+  #hoursTable tbody td:nth-child(7) > *,
+  #lastLoadTable  tbody td:nth-child(7) > *{
+    display: inline-grid;
+    place-items: center;
+    width: 34px; height: 34px;       /* mismo tamaño que el resto de iconos */
+    border-radius: 10px;
+    background: #fff;
+    border: 1px solid #e6edf6;
+    box-shadow: 0 3px 8px rgba(15,23,42,.08);
+  }
+
+  /* 3) Banda de acciones al final: ocupa el ancho y botones más grandes */
+  td.mobile-actions{
+    display: grid !important;
+    grid-template-columns: 120px 1fr !important; /* "Acciones" | botones */
+    gap: 8px !important;
+    align-items: center !important;
+    padding: 8px 0 !important;
+  }
+  td.mobile-actions::before{
+    content: attr(data-th);
+    font-weight: 600;
+    color: #64748b;
+    font-size: .8rem;
+    align-self: center;               /* etiqueta centrada */
+  }
+  /* Botones MÁS GRANDES en la banda final */
+  .actions-wrap .btn-icon,
+  .actions-wrap .icon-btn{
+    width: 44px !important;
+    height: 44px !important;
+    border-radius: 12px;
+    box-shadow: 0 4px 10px rgba(15,23,42,.10);
+  }
+  .card-table__head {
+    display: block;
+  }
+  .table-controls {
+    padding: 10px 0;
+    display: flex;
+    flex-flow: column-reverse;
+  }
+}
+  

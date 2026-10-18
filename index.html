@@ -1,0 +1,401 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Carga de horas</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" />
+  <link rel="stylesheet" href="css/style.css" />
+</head>
+<body>
+  <div class="layout">
+    <aside class="sidebar" id="sidebar">
+      <!-- BOTÓN TOGGLE -->
+      <button class="toggle-btn" onclick="toggleSidebar()" aria-label="Toggle sidebar">
+        <i id="toggle-icon" class="fas fa-chevron-left"></i>
+      </button>
+      
+      <!-- LOGO -->
+      <div class="logo-box">
+        <img src="img/logo-gac.png" alt="Logo GAC" />
+      </div>
+    
+      <!-- BUSCADOR -->
+      <div class="search-box">
+        <i class="fas fa-search"></i>
+        <input type="text" placeholder="Buscar proyecto..." />
+      </div>
+    
+      <!-- CONTENEDOR SCROLLABLE -->
+      <div class="sidebar-scrollable">
+        <!-- MÓDULOS -->
+        <div class="project-section">
+          <span class="section-title">Última carga de horas</span>
+          <ul class="project-list">
+            <li data-tooltip="2504024 BESS AMANECER" class="active">
+              <i class="fas fa-folder"></i> <span>2504024 BESS AMANECER</span>
+            </li>
+          </ul>
+        </div>
+      
+        <div class="project-section">
+          <span class="section-title">Últimos proyectos trabajados</span>
+          <ul class="project-list">
+            <li data-tooltip="2506031 DIA Santa Mariana"><i class="fas fa-folder"></i> <span>2506031 DIA Santa Mariana</span></li>
+            <li data-tooltip="2506035 GTA PS Kimal"><i class="fas fa-folder"></i> <span>2506035 GTA PS Kimal</span></li>
+            <li data-tooltip="2503022 ODS Biodiversidad"><i class="fas fa-folder"></i> <span>2503022 ODS Biodiversidad</span></li>
+            <li data-tooltip="2506030 IFC Alcones"><i class="fas fa-folder"></i> <span>2506030 IFC Alcones</span></li>
+            <li data-tooltip="2506032 Actualizaciones de Pozo Lepanto"><i class="fas fa-folder"></i> <span>2506032 Actualizaciones de Pozo Lepanto</span></li>
+          </ul>
+        </div>
+
+        <div class="project-section">
+          <span class="section-title">Proyectos administrativos</span>
+          <ul class="project-list">
+            <li data-tooltip="2504024 BESS AMANECER">
+              <i class="fas fa-folder"></i> <span>2504024 BESS AMANECER</span>
+            </li>
+          </ul>
+        </div>
+      
+        <div class="project-section">
+          <span class="section-title">Proyectos en marcha</span>
+          <ul class="project-list">
+            <li data-tooltip="2507037 Auditoria RCA GNL"><i class="fas fa-folder"></i> <span>2507037 Auditoria RCA GNL <span class="badge green">Nuevo</span></span></li>
+            <li data-tooltip="2404012 Monitoreo Ckhuri - Constr"><i class="fas fa-folder"></i> <span>2404012 Monitoreo Ckhuri - Constr <span class="badge green">Nuevo</span></span></li>
+            <li data-tooltip="2312089 Monitoreo Puelche-Operación"><i class="fas fa-folder"></i> <span>2312089 Monitoreo Puelche-Operación <span class="badge green">Nuevo</span></span></li>
+            <li data-tooltip="2301003 EIA Alameda Barrancas"><i class="fas fa-folder"></i> <span>2301003 EIA Alameda Barrancas <span class="badge green">Nuevo</span></span></li>
+            <li data-tooltip="2205068 EIA Tierras Raras Aclara"><i class="fas fa-folder"></i> <span>2205068 EIA Tierras Raras Aclara <span class="badge green">Nuevo</span></span></li>
+            <li data-tooltip="2209122 EIA Faena Caserones"><i class="fas fa-folder"></i> <span>2209122 EIA Faena Caserones</span></li>
+            <li data-tooltip="2210140 EIA SAR ANDINA"><i class="fas fa-folder"></i> <span>2210140 EIA SAR ANDINA</span></li>
+            <li data-tooltip="2105059 EIA INNA"><i class="fas fa-folder"></i> <span>2105059 EIA INNA</span></li>
+          </ul>
+        </div>
+      </div>
+      
+    
+      <!-- ÁREA FIJA AL FINAL -->
+      <div class="sidebar-footer">
+        <img src="img/gato-andino.png" alt="Gato andino" />
+      </div>
+    </aside>
+    <main class="main">
+      <!-- BARRA DE BIENVENIDA -->
+      <div class="top-bar">
+        <div class="top-bar-left">
+          <img class="logo-top" src="img/logo-gac.png" alt="Logo GAC" />
+          <h1>¡Bienvenido!</h1>
+          <p>Tu panel de carga de horas.</p>
+        </div>
+        <div class="top-bar-right">
+          <span id="fecha-actual" class="fecha-actual"></span>
+          <svg version="1.0" xmlns="http://www.w3.org/2000/svg"
+            width="915.000000pt" height="394.000000pt" viewBox="0 0 915.000000 394.000000"
+            preserveAspectRatio="xMidYMid meet">
+
+            <g transform="translate(0.000000,394.000000) scale(0.100000,-0.100000)"
+            fill="#ffffff" stroke="none">
+            <path d="M8445 3861 c-17 -10 -39 -30 -48 -45 -15 -22 -25 -26 -63 -26 -57 0
+            -98 -21 -206 -107 -79 -64 -95 -72 -185 -97 -71 -19 -175 -64 -373 -161 -151
+            -74 -302 -141 -335 -150 -79 -20 -147 -19 -285 6 -104 18 -139 20 -370 14
+            -299 -8 -339 -3 -705 79 -132 30 -339 77 -460 105 -439 99 -577 121 -825 128
+            -215 6 -350 -6 -580 -53 -292 -60 -503 -148 -1290 -536 -657 -325 -875 -425
+            -1164 -533 -401 -150 -674 -205 -903 -184 -234 21 -325 23 -387 5 -128 -38
+            -196 -111 -196 -213 1 -65 28 -121 83 -169 213 -188 660 -238 1123 -125 342
+            84 796 269 1215 496 152 83 503 291 555 331 36 27 44 23 44 -22 0 -97 52 -290
+            107 -399 72 -142 156 -224 368 -358 148 -93 231 -175 265 -262 21 -52 24 -77
+            24 -190 0 -85 -8 -177 -22 -267 -28 -172 -28 -220 -1 -276 28 -58 74 -90 254
+            -177 l150 -73 93 -101 94 -101 -30 -34 c-37 -43 -55 -118 -41 -170 5 -20 25
+            -52 44 -71 76 -75 203 -72 310 9 66 50 65 50 192 6 188 -65 329 -83 458 -59
+            78 14 131 42 150 79 30 58 12 154 -38 209 -24 26 -112 71 -139 71 -10 0 -18 3
+            -17 8 0 4 62 56 137 115 239 188 510 449 703 676 l46 54 49 -28 c27 -16 85
+            -54 129 -84 43 -31 124 -83 178 -116 132 -80 135 -85 72 -141 -27 -25 -90 -72
+            -140 -105 l-90 -60 -72 7 c-94 8 -160 -13 -217 -70 -39 -38 -66 -97 -66 -142
+            0 -104 84 -186 203 -200 144 -17 397 100 639 295 213 172 290 310 253 455 -22
+            86 -95 209 -203 344 -19 23 -33 44 -31 46 2 2 44 21 92 41 108 47 195 98 312
+            185 118 88 226 201 373 385 270 340 425 441 692 452 81 4 140 1 201 -11 198
+            -37 285 -12 405 117 96 104 122 164 93 220 -7 12 -33 45 -59 72 -51 55 -64 85
+            -80 186 -27 177 -91 266 -272 379 -54 34 -92 65 -98 80 -5 14 -9 66 -8 115 3
+            149 -30 193 -107 146z m-3422 -2061 c172 -80 354 -134 522 -155 86 -11 88 -13
+            82 -54 -11 -88 -109 -270 -300 -564 -88 -134 -152 -201 -232 -241 -66 -34 -95
+            -32 -217 16 -131 50 -209 98 -245 152 -81 119 -69 207 53 394 110 168 175 307
+            214 460 6 23 12 42 14 42 2 0 51 -22 109 -50z"/>
+            </g>
+          </svg>
+        </div>
+      </div>
+      
+      <!-- CALUGAS DE HORAS -->
+      <div class="cards">
+          <div class="card today">
+            <div class="icon"><i class="fas fa-sun"></i></div>
+            <div class="label">Hoy</div>
+            <div class="value">4 hrs</div>
+          </div>
+          <div class="card week">
+            <div class="icon"><i class="fas fa-calendar-week"></i></div>
+            <div class="label">Semana pasada</div>
+            <div class="value">30 hrs</div>
+          </div>
+          <div class="card month">
+            <div class="icon"><i class="fas fa-calendar-alt"></i></div>
+            <div class="label">Mes actual</div>
+            <div class="value">145 hrs</div>
+          </div>
+          <div class="card warning">
+            <div class="icon"><i class="fas fa-exclamation-triangle"></i></div>
+            <div class="label">Fuera de plazo</div>
+            <div class="value">10 hrs</div>
+          </div>
+      </div>
+
+      <!-- ===== Última carga realizada (solo 3 registros) ===== -->
+      <section class="data-card variant-soft" id="last-load">
+        <div class="card-header-compact">
+          <div>
+            <h3 class="card-title">
+              <i class="fas fa-clock-rotate-left"></i>
+              Última carga realizada
+            </h3>
+            <p class="card-subtitle">Los últimos 3 registros agregados.</p>
+          </div>
+          <span class="badge-soft">3 registros</span>
+        </div>
+
+        <div class="table-wrapper table--compact">
+          <table class="table table-lastload" id="lastLoadTable">
+            <thead>
+              <tr>
+                <th>Código</th>
+                <th>Proyecto</th>
+                <th>Área usuario</th>
+                <th>Tarea</th>
+                <th>Horas</th>
+                <th>Fecha trabajada</th>
+                <th>Estado</th>
+                <th>Duplicar</th>
+                <th>Editar</th>
+                <th>Eliminar</th>
+              </tr>
+            </thead>
+            <tbody>
+              <!-- 3 registros de ejemplo: reemplaza por los tuyos si quieres -->
+              <tr>
+                <td>2504024</td>
+                <td>BESS Amanecer</td>
+                <td>Energía</td>
+                <td>Modelado</td>
+                <td>6.00</td>
+                <td>05-08-2025</td>
+                <td><span class="status-pill ok"><i class="fas fa-check-circle"></i> Dentro de plazo</span></td>
+                <td><button class="btn-icon btn-duplicate" title="Duplicar"><i class="fas fa-copy"></i></button></td>
+                <td><button class="btn-icon btn-edit" title="Editar"><i class="fas fa-pen"></i></button></td>
+                <td><button class="btn-icon btn-delete" title="Eliminar"><i class="fas fa-trash"></i></button></td>
+              </tr>
+              <tr>
+                <td>2312089</td>
+                <td>Monitoreo Puelche</td>
+                <td>Ambiental</td>
+                <td>Informe</td>
+                <td>2.50</td>
+                <td>02-08-2025</td>
+                <td><span class="status-pill review"><i class="fas fa-eye"></i> Por revisar</span></td>
+                <td><button class="btn-icon btn-duplicate" title="Duplicar"><i class="fas fa-copy"></i></button></td>
+                <td><button class="btn-icon btn-edit" title="Editar"><i class="fas fa-pen"></i></button></td>
+                <td><button class="btn-icon btn-delete" title="Eliminar"><i class="fas fa-trash"></i></button></td>
+              </tr>
+              <tr>
+                <td>9999999</td>
+                <td>Proyecto Test Transformación</td>
+                <td>Transformación</td>
+                <td>testODC2</td>
+                <td>3.27</td>
+                <td>01-08-2025</td>
+                <td><span class="status-pill late"><i class="fas fa-circle-exclamation"></i> Fuera de plazo</span></td>
+                <td><button class="btn-icon btn-duplicate" title="Duplicar"><i class="fas fa-copy"></i></button></td>
+                <td><button class="btn-icon btn-edit" title="Editar"><i class="fas fa-pen"></i></button></td>
+                <td><button class="btn-icon btn-delete" title="Eliminar"><i class="fas fa-trash"></i></button></td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </section>
+
+      <!-- FORMULARIO DE CARGA -->
+      <div class="form-section">
+        <div class="form-section__head">
+          <div class="form-section__title">
+            <h3>2504024 BESS AMANECER</h3>
+            <p>Resumen de horas cargadas y su estado.</p>
+          </div>
+
+          <!-- Íconos MOVIDOS acá -->
+          <div class="pi2-actions">
+            <a class="pi2-action sp" href="#" title="SharePoint">
+              <img src="img/sharepoint.png" alt="">
+            </a>
+            <a class="pi2-action planner" href="#" title="Planner">
+              <img src="img/planner.svg" alt="">
+            </a>
+            <a class="pi2-action teams" href="#" title="Teams">
+              <img src="img/teams.png" alt="">
+            </a>
+          </div>
+        </div>
+        <div class="form-row">
+          <select>
+              <option value="">Seleccione una opcion</option>
+              <option selected="" value="0">Seleccionar todas las areas</option>
+              <option value="10">SEIA   </option>
+              <option value="11">Normativa   </option>
+              <option value="4">Fauna   </option>
+              <option value="5">Flora   </option>
+              <option value="17">Vialidad   </option>
+              <option value="21">NN   </option>
+              <option value="9">Hongos y Líquenes   </option>
+              <option value="19">Permisos   </option>
+              <option value="20">Administración   </option>
+              <option value="1">Aire   </option>
+              <option value="18">Patrimonio Cultural   </option>
+              <option value="7">Ecosistemas Acuáticos   </option>
+              <option value="33">Personas   </option>
+              <option value="13">SST   </option>
+              <option value="2">Especialidades Ambientales   </option>
+              <option value="6">Geomática   </option>
+          </select>
+          <select>
+            <option selected disabled>Selecciona Actividad</option>
+            <option>Elaboración Documentos - Adicionales NN 2</option>
+            <option>Elaboración Documentos - Elaboración y tramitación permiso caza y captura SAG</option>
+          </select>
+          <select>
+            <option selected disabled>Selecciona Tarea</option>
+            <option>Elaboración Documentos - Adicionales NN 2</option>
+            <option>Elaboración Documentos - Elaboración y tramitación permiso caza y captura SAG</option>
+          </select>
+        </div>
+    
+        <div class="form-row">
+          <input type="date" />
+          <input type="number" placeholder="Horas" min="0" />
+          <input type="number" placeholder="Minutos" min="0" max="59" />
+        </div>
+    
+        <div class="form-row">
+          <textarea rows="3" placeholder="Ingresa glosa o descripción..."></textarea>
+        </div>
+      </div>
+
+      <section class="card-table">
+        <div class="card-table__head">
+          <div>
+            <h3>Mantenedor de horas — Última semana</h3>
+            <p>Resumen de horas cargadas y su estado.</p>
+          </div>
+      
+          <div class="table-controls">
+            <label class="table-controls__show">
+              <span>Mostrar</span>
+              <select id="rowsPerPage">
+                <option>5</option><option selected>10</option><option>25</option><option>50</option>
+              </select>
+            </label>
+      
+            <label class="table-controls__search">
+              <i class="fas fa-search"></i>
+              <input id="tableSearch" type="search" placeholder="Buscar por código, proyecto, tarea…"/>
+            </label>
+          </div>
+        </div>
+      
+        <div class="table-wrap">
+          <table class="pretty-table" id="hoursTable">
+            <thead>
+              <tr>
+                <th data-sort="codigo">Código <i class="fas fa-sort"></i></th>
+                <th data-sort="proyecto">Proyecto <i class="fas fa-sort"></i></th>
+                <th data-sort="area">Área usuario <i class="fas fa-sort"></i></th>
+                <th data-sort="tarea">Tarea <i class="fas fa-sort"></i></th>
+                <th data-sort="horas">Horas <i class="fas fa-sort"></i></th>
+                <th data-sort="fecha">Fecha trabajada <i class="fas fa-sort"></i></th>
+                <th data-sort="estado">Estado</th>
+                <th>Editar</th>
+                <th>Eliminar</th>
+              </tr>
+            </thead>
+            <tbody>
+              <!-- fila ejemplo -->
+              <tr>
+                <td data-key="codigo">9999999</td>
+                <td data-key="proyecto">Proyecto Test Transformación</td>
+                <td data-key="area">Transformación</td>
+                <td data-key="tarea">testODC2</td>
+                <td data-key="horas" data-num="3.27">3.27</td>
+                <td data-key="fecha" data-date="2025-08-01">01-08-2025</td>
+                <td data-key="estado">
+                  <span class="badge status--late"><i class="fas fa-clock"></i> Fuera de plazo</span>
+                </td>
+                <td>
+                  <button class="icon-btn icon-btn--edit" title="Editar">
+                    <i class="fas fa-pen"></i>
+                  </button>
+                </td>
+                <td>
+                  <button class="icon-btn icon-btn--delete" title="Eliminar">
+                    <i class="fas fa-trash"></i>
+                  </button>
+                </td>
+              </tr>
+      
+              <!-- duplica/inyecta más filas según necesites -->
+              <tr>
+                <td data-key="codigo">2504024</td>
+                <td data-key="proyecto">BESS Amanecer</td>
+                <td data-key="area">Energía</td>
+                <td data-key="tarea">Modelado</td>
+                <td data-key="horas" data-num="6">6.00</td>
+                <td data-key="fecha" data-date="2025-08-05">05-08-2025</td>
+                <td data-key="estado">
+                  <span class="badge status--ok"><i class="fas fa-check-circle"></i> Dentro de plazo</span>
+                </td>
+                <td><button class="icon-btn icon-btn--edit" title="Editar"><i class="fas fa-pen"></i></button></td>
+                <td><button class="icon-btn icon-btn--delete" title="Eliminar"><i class="fas fa-trash"></i></button></td>
+              </tr>
+      
+              <tr>
+                <td data-key="codigo">2312089</td>
+                <td data-key="proyecto">Monitoreo Puelche</td>
+                <td data-key="area">Ambiental</td>
+                <td data-key="tarea">Informe</td>
+                <td data-key="horas" data-num="2.5">2.50</td>
+                <td data-key="fecha" data-date="2025-08-02">02-08-2025</td>
+                <td data-key="estado">
+                  <span class="badge status--review"><i class="fas fa-eye"></i> Por revisar</span>
+                </td>
+                <td><button class="icon-btn icon-btn--edit" title="Editar"><i class="fas fa-pen"></i></button></td>
+                <td><button class="icon-btn icon-btn--delete" title="Eliminar"><i class="fas fa-trash"></i></button></td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      
+        <div class="table-foot">
+          <span id="tableInfo">Mostrando 1 a 3 de 3 registros</span>
+          <nav class="pagination">
+            <button class="page-btn" data-page="prev" disabled><i class="fas fa-chevron-left"></i></button>
+            <span class="page-index"><b id="pageNow">1</b>/<span id="pageTotal">1</span></span>
+            <button class="page-btn" data-page="next" disabled><i class="fas fa-chevron-right"></i></button>
+          </nav>
+        </div>
+      </section> 
+    </main> 
+  </div>
+  
+  <!-- Tooltip flotante global -->
+  <div id="smart-tooltip" class="smart-tooltip" role="tooltip" aria-hidden="true"></div>
+
+  <script src="js/app.js" defer></script>
+  <script src="js/nav.js" defer></script>
+  
+</body>
+</html>
